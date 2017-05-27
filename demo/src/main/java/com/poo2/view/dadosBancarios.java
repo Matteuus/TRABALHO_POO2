@@ -9,6 +9,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
+import javax.swing.JButton;
 
 public class dadosBancarios extends JFrame {
 
@@ -74,5 +75,4 @@ public class dadosBancarios extends JFrame {
 		contentPane.add(textField_2);
 		textField_2.setColumns(10);
 	}
-
 }
