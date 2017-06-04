@@ -10,6 +10,7 @@ import javax.swing.JTextField;
 import java.awt.Font;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
+import javax.swing.JPasswordField;
 
 
 public class FormCadEmpresa extends JFrame {
@@ -26,6 +27,10 @@ public class FormCadEmpresa extends JFrame {
 	private JTextField textField_5;
 	private JTextField textField_6;
 	private JTextField textField_7;
+	private JTextField textField_4;
+	private JPasswordField passwordField;
+	private JTextField textField_8;
+	private JTextField textField_9;
 
 	/**
 	 * Launch the application.
@@ -126,12 +131,12 @@ public class FormCadEmpresa extends JFrame {
 
 		JLabel lblUf = new JLabel("UF:");
 		lblUf.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblUf.setBounds(385, 123, 46, 14);
+		lblUf.setBounds(385, 178, 46, 14);
 		contentPane.add(lblUf);
 
 		@SuppressWarnings("rawtypes")
 		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(385, 145, 28, 20);
+		comboBox.setBounds(383, 197, 28, 20);
 		contentPane.add(comboBox);
 		
 		JButton btnSalvarDados = new JButton("Salvar Dados");
@@ -141,5 +146,44 @@ public class FormCadEmpresa extends JFrame {
 		JButton btnNewButton = new JButton("Voltar");
 		btnNewButton.setBounds(21, 425, 115, 25);
 		contentPane.add(btnNewButton);
+		
+		textField_4 = new JTextField();
+		textField_4.setColumns(10);
+		textField_4.setBounds(383, 145, 173, 20);
+		contentPane.add(textField_4);
+		
+		JLabel lblUsurio = new JLabel("Usuário");
+		lblUsurio.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblUsurio.setBounds(383, 126, 46, 14);
+		contentPane.add(lblUsurio);
+		
+		JLabel lblSenha = new JLabel("Senha");
+		lblSenha.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblSenha.setBounds(568, 123, 115, 20);
+		contentPane.add(lblSenha);
+		
+		passwordField = new JPasswordField();
+		passwordField.setBounds(566, 145, 214, 20);
+		contentPane.add(passwordField);
+		
+		textField_8 = new JTextField();
+		textField_8.setColumns(10);
+		textField_8.setBounds(421, 197, 173, 20);
+		contentPane.add(textField_8);
+		
+		JLabel lblNmero = new JLabel("Número");
+		lblNmero.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblNmero.setBounds(421, 178, 76, 14);
+		contentPane.add(lblNmero);
+		
+		JLabel lblComplemento = new JLabel("Complemento");
+		lblComplemento.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblComplemento.setBounds(606, 175, 115, 20);
+		contentPane.add(lblComplemento);
+		
+		textField_9 = new JTextField();
+		textField_9.setColumns(10);
+		textField_9.setBounds(604, 197, 167, 20);
+		contentPane.add(textField_9);
 	}
 }

@@ -68,11 +68,11 @@ public class TelaLogin extends JFrame {
 		contentPane.add(lblLogin);
 		
 		JButton btnEntrar = new JButton("Entrar");
-		btnEntrar.setBounds(317, 329, 97, 25);
+		btnEntrar.setBounds(340, 325, 97, 25);
 		contentPane.add(btnEntrar);
 		
 		JButton btnCadastrar = new JButton("Cadastrar");
-		btnCadastrar.setBounds(317, 367, 97, 25);
+		btnCadastrar.setBounds(340, 361, 97, 25);
 		contentPane.add(btnCadastrar);
 	}
 }
