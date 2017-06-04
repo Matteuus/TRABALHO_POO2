@@ -32,6 +32,7 @@ public class FormCadEmpresa extends JFrame {
 	private JTextField textField_8;
 	private JTextField textField_9;
 
+	
 	/**
 	 * Launch the application.
 	 */
