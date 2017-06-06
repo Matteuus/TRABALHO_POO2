@@ -5,12 +5,17 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import com.poo2.contoller.Empresa;
+
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import java.awt.Font;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 import javax.swing.JPasswordField;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 
 public class FormCadEmpresa extends JFrame {
@@ -20,17 +25,17 @@ public class FormCadEmpresa extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_5;
-	private JTextField textField_6;
-	private JTextField textField_7;
-	private JTextField textField_4;
-	private JPasswordField passwordField;
-	private JTextField textField_8;
-	private JTextField textField_9;
+	private JTextField ctNome;
+	private JTextField ctCnpj;
+	private JTextField ctBairro;
+	private JTextField ctLogradouro;
+	private JTextField ctCidade;
+	private JTextField ctTel;
+	private JTextField ctCep;
+	private JTextField ctUsuario;
+	private JPasswordField ctSenha;
+	private JTextField ctNumero;
+	private JTextField ctComplemento;
 
 	
 	/**
@@ -65,70 +70,70 @@ public class FormCadEmpresa extends JFrame {
 		lblRazoSocial.setBounds(21, 11, 89, 26);
 		contentPane.add(lblRazoSocial);
 
-		textField = new JTextField();
-		textField.setBounds(21, 36, 352, 20);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		ctNome = new JTextField();
+		ctNome.setBounds(21, 36, 352, 20);
+		contentPane.add(ctNome);
+		ctNome.setColumns(10);
 
 		JLabel lblNome = new JLabel("CNPJ");
 		lblNome.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblNome.setBounds(21, 67, 89, 26);
 		contentPane.add(lblNome);
 
-		textField_1 = new JTextField();
-		textField_1.setBounds(21, 92, 352, 20);
-		contentPane.add(textField_1);
-		textField_1.setColumns(10);
+		ctCnpj = new JTextField();
+		ctCnpj.setBounds(21, 92, 352, 20);
+		contentPane.add(ctCnpj);
+		ctCnpj.setColumns(10);
 
 		JLabel lblCep = new JLabel("Bairro");
 		lblCep.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblCep.setBounds(21, 123, 46, 14);
 		contentPane.add(lblCep);
 
-		textField_2 = new JTextField();
-		textField_2.setBounds(21, 145, 173, 20);
-		contentPane.add(textField_2);
-		textField_2.setColumns(10);
+		ctBairro = new JTextField();
+		ctBairro.setBounds(21, 145, 173, 20);
+		contentPane.add(ctBairro);
+		ctBairro.setColumns(10);
 
 		JLabel lblCnpj = new JLabel("Logradouro");
 		lblCnpj.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblCnpj.setBounds(206, 120, 115, 20);
 		contentPane.add(lblCnpj);
 
-		textField_3 = new JTextField();
-		textField_3.setBounds(206, 145, 167, 20);
-		contentPane.add(textField_3);
-		textField_3.setColumns(10);
+		ctLogradouro = new JTextField();
+		ctLogradouro.setBounds(206, 145, 167, 20);
+		contentPane.add(ctLogradouro);
+		ctLogradouro.setColumns(10);
 
 		JLabel lblInscrioMunicipal = new JLabel("Cidade");
 		lblInscrioMunicipal.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblInscrioMunicipal.setBounds(21, 178, 149, 14);
 		contentPane.add(lblInscrioMunicipal);
 
-		textField_5 = new JTextField();
-		textField_5.setBounds(21, 197, 352, 20);
-		contentPane.add(textField_5);
-		textField_5.setColumns(10);
+		ctCidade = new JTextField();
+		ctCidade.setBounds(21, 197, 352, 20);
+		contentPane.add(ctCidade);
+		ctCidade.setColumns(10);
 
 		JLabel lblNomeFantasia = new JLabel("Telefone");
 		lblNomeFantasia.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblNomeFantasia.setBounds(385, 17, 100, 14);
 		contentPane.add(lblNomeFantasia);
 
-		textField_6 = new JTextField();
-		textField_6.setBounds(385, 36, 395, 20);
-		contentPane.add(textField_6);
-		textField_6.setColumns(10);
+		ctTel = new JTextField();
+		ctTel.setBounds(385, 36, 395, 20);
+		contentPane.add(ctTel);
+		ctTel.setColumns(10);
 
 		JLabel lblBairro = new JLabel("CEP");
 		lblBairro.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblBairro.setBounds(385, 73, 46, 14);
 		contentPane.add(lblBairro);
 
-		textField_7 = new JTextField();
-		textField_7.setBounds(385, 92, 395, 20);
-		contentPane.add(textField_7);
-		textField_7.setColumns(10);
+		ctCep = new JTextField();
+		ctCep.setBounds(385, 92, 395, 20);
+		contentPane.add(ctCep);
+		ctCep.setColumns(10);
 
 		JLabel lblUf = new JLabel("UF:");
 		lblUf.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -136,11 +141,22 @@ public class FormCadEmpresa extends JFrame {
 		contentPane.add(lblUf);
 
 		@SuppressWarnings("rawtypes")
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(383, 197, 28, 20);
-		contentPane.add(comboBox);
+		JComboBox ctEstado = new JComboBox();
+		ctEstado.setBounds(383, 197, 28, 20);
+		contentPane.add(ctEstado);
 		
 		JButton btnSalvarDados = new JButton("Salvar Dados");
+		btnSalvarDados.addActionListener(new ActionListener() {
+			@SuppressWarnings("deprecation")
+			public void actionPerformed(ActionEvent arg0) {
+				Empresa e = new Empresa();
+				String numAux = ctNumero.getText();
+				int numero = Integer.valueOf(numAux).intValue();
+				e.addDados(ctNome.getText(), ctCnpj.getText(), ctTel.getText(), ctLogradouro.getText(), ctBairro.getText(),
+						numero, ctComplemento.getText(), ctCidade.getText(), "CE", ctUsuario.getText(),
+						ctSenha.getText());
+			}
+		});
 		btnSalvarDados.setBounds(665, 425, 115, 25);
 		contentPane.add(btnSalvarDados);
 		
@@ -148,10 +164,10 @@ public class FormCadEmpresa extends JFrame {
 		btnNewButton.setBounds(21, 425, 115, 25);
 		contentPane.add(btnNewButton);
 		
-		textField_4 = new JTextField();
-		textField_4.setColumns(10);
-		textField_4.setBounds(383, 145, 173, 20);
-		contentPane.add(textField_4);
+		ctUsuario = new JTextField();
+		ctUsuario.setColumns(10);
+		ctUsuario.setBounds(383, 145, 173, 20);
+		contentPane.add(ctUsuario);
 		
 		JLabel lblUsurio = new JLabel("Usuário");
 		lblUsurio.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -163,14 +179,14 @@ public class FormCadEmpresa extends JFrame {
 		lblSenha.setBounds(568, 123, 115, 20);
 		contentPane.add(lblSenha);
 		
-		passwordField = new JPasswordField();
-		passwordField.setBounds(566, 145, 214, 20);
-		contentPane.add(passwordField);
+		ctSenha = new JPasswordField();
+		ctSenha.setBounds(566, 145, 214, 20);
+		contentPane.add(ctSenha);
 		
-		textField_8 = new JTextField();
-		textField_8.setColumns(10);
-		textField_8.setBounds(421, 197, 173, 20);
-		contentPane.add(textField_8);
+		ctNumero = new JTextField();
+		ctNumero.setColumns(10);
+		ctNumero.setBounds(421, 197, 173, 20);
+		contentPane.add(ctNumero);
 		
 		JLabel lblNmero = new JLabel("Número");
 		lblNmero.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -182,9 +198,9 @@ public class FormCadEmpresa extends JFrame {
 		lblComplemento.setBounds(606, 175, 115, 20);
 		contentPane.add(lblComplemento);
 		
-		textField_9 = new JTextField();
-		textField_9.setColumns(10);
-		textField_9.setBounds(604, 197, 167, 20);
-		contentPane.add(textField_9);
+		ctComplemento = new JTextField();
+		ctComplemento.setColumns(10);
+		ctComplemento.setBounds(604, 197, 167, 20);
+		contentPane.add(ctComplemento);
 	}
 }
