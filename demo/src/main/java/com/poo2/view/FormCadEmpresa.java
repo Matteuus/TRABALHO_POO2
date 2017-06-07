@@ -17,7 +17,6 @@ import javax.swing.JPasswordField;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-
 public class FormCadEmpresa extends JFrame {
 
 	/**
@@ -37,7 +36,6 @@ public class FormCadEmpresa extends JFrame {
 	private JTextField ctNumero;
 	private JTextField ctComplemento;
 
-	
 	/**
 	 * Launch the application.
 	 */
@@ -140,11 +138,37 @@ public class FormCadEmpresa extends JFrame {
 		lblUf.setBounds(385, 178, 46, 14);
 		contentPane.add(lblUf);
 
-		@SuppressWarnings("rawtypes")
-		JComboBox ctEstado = new JComboBox();
-		ctEstado.setBounds(383, 197, 28, 20);
+		JComboBox<String> ctEstado = new JComboBox<String>();
+		ctEstado.addItem("AC");
+		ctEstado.addItem("AL");
+		ctEstado.addItem("AP");
+		ctEstado.addItem("AM");
+		ctEstado.addItem("BA");
+		ctEstado.addItem("CE");
+		ctEstado.addItem("DF");
+		ctEstado.addItem("ES");
+		ctEstado.addItem("GO");
+		ctEstado.addItem("MA");
+		ctEstado.addItem("MT");
+		ctEstado.addItem("MS");
+		ctEstado.addItem("MG");
+		ctEstado.addItem("PA");
+		ctEstado.addItem("PB");
+		ctEstado.addItem("PR");
+		ctEstado.addItem("PE");
+		ctEstado.addItem("PI");
+		ctEstado.addItem("RJ");
+		ctEstado.addItem("RN");
+		ctEstado.addItem("RS");
+		ctEstado.addItem("RO");
+		ctEstado.addItem("RR");
+		ctEstado.addItem("SP");
+		ctEstado.addItem("SC");
+		ctEstado.addItem("SE");
+		ctEstado.addItem("TO");
+		ctEstado.setBounds(383, 197, 70, 20);
 		contentPane.add(ctEstado);
-		
+
 		JButton btnSalvarDados = new JButton("Salvar Dados");
 		btnSalvarDados.addActionListener(new ActionListener() {
 			@SuppressWarnings("deprecation")
@@ -152,55 +176,55 @@ public class FormCadEmpresa extends JFrame {
 				Empresa e = new Empresa();
 				String numAux = ctNumero.getText();
 				int numero = Integer.valueOf(numAux).intValue();
-				e.addDados(ctNome.getText(), ctCnpj.getText(), ctTel.getText(), ctLogradouro.getText(), ctBairro.getText(),
-						numero, ctComplemento.getText(), ctCidade.getText(), "CE", ctUsuario.getText(),
-						ctSenha.getText());
+				e.addDados(ctNome.getText(), ctCnpj.getText(), ctTel.getText(), ctLogradouro.getText(),
+						ctBairro.getText(), numero, ctComplemento.getText(), ctCidade.getText(),
+						ctEstado.getSelectedItem().toString(), ctUsuario.getText(), ctSenha.getText());
 			}
 		});
 		btnSalvarDados.setBounds(665, 425, 115, 25);
 		contentPane.add(btnSalvarDados);
-		
+
 		JButton btnNewButton = new JButton("Voltar");
 		btnNewButton.setBounds(21, 425, 115, 25);
 		contentPane.add(btnNewButton);
-		
+
 		ctUsuario = new JTextField();
 		ctUsuario.setColumns(10);
 		ctUsuario.setBounds(383, 145, 173, 20);
 		contentPane.add(ctUsuario);
-		
+
 		JLabel lblUsurio = new JLabel("Usuário");
 		lblUsurio.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblUsurio.setBounds(383, 126, 46, 14);
 		contentPane.add(lblUsurio);
-		
+
 		JLabel lblSenha = new JLabel("Senha");
 		lblSenha.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblSenha.setBounds(568, 123, 115, 20);
 		contentPane.add(lblSenha);
-		
+
 		ctSenha = new JPasswordField();
 		ctSenha.setBounds(566, 145, 214, 20);
 		contentPane.add(ctSenha);
-		
+
 		ctNumero = new JTextField();
 		ctNumero.setColumns(10);
-		ctNumero.setBounds(421, 197, 173, 20);
+		ctNumero.setBounds(465, 197, 149, 20);
 		contentPane.add(ctNumero);
-		
+
 		JLabel lblNmero = new JLabel("Número");
 		lblNmero.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblNmero.setBounds(421, 178, 76, 14);
+		lblNmero.setBounds(465, 178, 76, 14);
 		contentPane.add(lblNmero);
-		
+
 		JLabel lblComplemento = new JLabel("Complemento");
 		lblComplemento.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblComplemento.setBounds(606, 175, 115, 20);
+		lblComplemento.setBounds(631, 175, 115, 20);
 		contentPane.add(lblComplemento);
-		
+
 		ctComplemento = new JTextField();
 		ctComplemento.setColumns(10);
-		ctComplemento.setBounds(604, 197, 167, 20);
+		ctComplemento.setBounds(631, 197, 149, 20);
 		contentPane.add(ctComplemento);
 	}
 }

@@ -69,30 +69,6 @@ public class FormCompraProduto extends JFrame {
 		JButton btnCategoriaF = new JButton("Categoria F");
 		btnCategoriaF.setBounds(617, 13, 109, 25);
 		contentPane.add(btnCategoriaF);
-		
-		JButton btnCategoriaG = new JButton("Categoria G");
-		btnCategoriaG.setBounds(12, 51, 109, 25);
-		contentPane.add(btnCategoriaG);
-		
-		JButton btnCategoriaH = new JButton("Categoria H");
-		btnCategoriaH.setBounds(133, 51, 109, 25);
-		contentPane.add(btnCategoriaH);
-		
-		JButton btnCategoriaI = new JButton("Categoria I");
-		btnCategoriaI.setBounds(254, 51, 109, 25);
-		contentPane.add(btnCategoriaI);
-		
-		JButton btnCategoriaJ = new JButton("Categoria J");
-		btnCategoriaJ.setBounds(375, 51, 109, 25);
-		contentPane.add(btnCategoriaJ);
-		
-		JButton btnCategoriaK = new JButton("Categoria K");
-		btnCategoriaK.setBounds(496, 51, 109, 25);
-		contentPane.add(btnCategoriaK);
-		
-		JButton btnCategoriaL = new JButton("Categoria L");
-		btnCategoriaL.setBounds(617, 51, 109, 25);
-		contentPane.add(btnCategoriaL);
 	}
 
 }
