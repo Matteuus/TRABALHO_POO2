@@ -5,8 +5,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
-import com.poo2.contoller.ProdutosDAO;
-import com.poo2.tableModel.ProdutoTableModel;
+import com.poo2.contoller.RelatorioDAO;
+import com.poo2.tableModel.CompraTableModel;
 import javax.swing.JTable;
 import javax.swing.WindowConstants;
 import java.awt.Font;
@@ -17,13 +17,14 @@ public class ListaProdutos extends JFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	protected static final long Long = 0;
 	private JPanel contentPane;
 	private JTable table;
 
 	private void PreencherTabela() {
-		ProdutosDAO pd = new ProdutosDAO();
-		ProdutoTableModel ptm = new ProdutoTableModel(pd.lista());
-		table.setModel(ptm);
+		RelatorioDAO rd = new RelatorioDAO();
+		CompraTableModel ctm = new CompraTableModel(rd.lista());
+		table.setModel(ctm);
 	}
 
 	/**
@@ -34,7 +35,7 @@ public class ListaProdutos extends JFrame {
 			@Override
 			public void run() {
 				try {
-					ListaProdutos frame = new ListaProdutos();
+					ListaProdutos frame = new ListaProdutos(Long);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -46,7 +47,7 @@ public class ListaProdutos extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public ListaProdutos() {
+	public ListaProdutos(long id) {
 		setTitle("Lista de Produtos");
 		setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 810, 510);

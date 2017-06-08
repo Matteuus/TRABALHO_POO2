@@ -47,19 +47,27 @@ public class TelaPrincipal extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JMenuBar menuBar = new JMenuBar();
 		menuBar.setBounds(0, 0, 792, 26);
 		contentPane.add(menuBar);
-		
+
 		JMenu mnNova = new JMenu("Nova");
 		menuBar.add(mnNova);
-		
+
 		JMenuItem mntmCompra = new JMenuItem("Compra");
+		mntmCompra.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				ListaCompras lp = new ListaCompras();
+				lp.setVisible(true);
+				dispose();
+			}
+		});
 		mnNova.add(mntmCompra);
-		
+
 		JMenuItem mntmVenda = new JMenuItem("Venda");
 		mntmVenda.addActionListener(new ActionListener() {
+
 			public void actionPerformed(ActionEvent arg0) {
 				CategoriaProduto fcp = new CategoriaProduto(id);
 				fcp.setVisible(true);
@@ -67,29 +75,30 @@ public class TelaPrincipal extends JFrame {
 			}
 		});
 		mnNova.add(mntmVenda);
-		
+
 		JMenu mnRelatrio = new JMenu("Relatório");
 		menuBar.add(mnRelatrio);
-		
+
 		JMenuItem mntmCompra_1 = new JMenuItem("Compra");
+
 		mnRelatrio.add(mntmCompra_1);
-		
+
 		JMenuItem mntmVenda_1 = new JMenuItem("Venda");
 		mnRelatrio.add(mntmVenda_1);
-		
+
 		JMenu mnLista = new JMenu("Lista");
 		menuBar.add(mnLista);
-		
+
 		JMenuItem mntmProdutos = new JMenuItem("Produtos");
 		mntmProdutos.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				ListaProdutos lp = new ListaProdutos();
+			public void actionPerformed(ActionEvent e) {
+				ListaProdutos lp = new ListaProdutos(id);
 				lp.setVisible(true);
 				dispose();
 			}
 		});
 		mnLista.add(mntmProdutos);
-		
+
 		JButton btnSair = new JButton("Sair");
 		btnSair.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -100,7 +109,7 @@ public class TelaPrincipal extends JFrame {
 		});
 		btnSair.setBounds(12, 425, 97, 25);
 		contentPane.add(btnSair);
-		
+
 		JButton btnConfiguraes = new JButton("Configurações");
 		btnConfiguraes.setBounds(667, 425, 115, 25);
 		contentPane.add(btnConfiguraes);
