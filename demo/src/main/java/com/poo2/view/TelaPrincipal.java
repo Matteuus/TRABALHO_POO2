@@ -84,6 +84,13 @@ public class TelaPrincipal extends JFrame {
 		mnLista.add(mntmProdutos);
 		
 		JButton btnSair = new JButton("Sair");
+		btnSair.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TelaLogin tl = new TelaLogin();
+				tl.setVisible(true);
+				dispose();
+			}
+		});
 		btnSair.setBounds(12, 425, 97, 25);
 		contentPane.add(btnSair);
 		

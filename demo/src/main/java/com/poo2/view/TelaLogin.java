@@ -14,6 +14,7 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JPasswordField;
 
 public class TelaLogin extends JFrame {
 
@@ -23,7 +24,7 @@ public class TelaLogin extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField ctLogin;
-	private JTextField ctSenha;
+	private JPasswordField ctSenha;
 
 	/**
 	 * Launch the application.
@@ -67,16 +68,12 @@ public class TelaLogin extends JFrame {
 		lblSenha.setBounds(275, 269, 67, 22);
 		contentPane.add(lblSenha);
 
-		ctSenha = new JTextField();
-		ctSenha.setBounds(340, 269, 116, 22);
-		contentPane.add(ctSenha);
-		ctSenha.setColumns(10);
-
 		JButton btnEntrar = new JButton("Entrar");
 		btnEntrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
 				Empresa e = new Empresa();
+				@SuppressWarnings("deprecation")
 				long id = e.verificarLogin(ctLogin.getText(), ctSenha.getText());
 				TelaPrincipal tp = new TelaPrincipal(id);
 				tp.setVisible(true);
@@ -99,5 +96,9 @@ public class TelaLogin extends JFrame {
 		});
 		btnCadastrar.setBounds(340, 361, 97, 25);
 		contentPane.add(btnCadastrar);
+		
+		ctSenha = new JPasswordField();
+		ctSenha.setBounds(340, 271, 116, 22);
+		contentPane.add(ctSenha);
 	}
 }
