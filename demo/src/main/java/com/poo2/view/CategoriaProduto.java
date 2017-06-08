@@ -46,6 +46,13 @@ public class CategoriaProduto extends JFrame {
 		contentPane.setLayout(null);
 		
 		JButton btnVoltar = new JButton("Voltar");
+		btnVoltar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TelaPrincipal tl = new TelaPrincipal(id);
+				tl.setVisible(true);
+				dispose();
+			}
+		});
 		btnVoltar.setBounds(12, 425, 97, 25);
 		contentPane.add(btnVoltar);
 		

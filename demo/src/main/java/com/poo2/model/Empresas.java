@@ -21,6 +21,9 @@ public class Empresas {
 	@Column(nullable = false, length = 10)
 	private String telEmpresa;
 
+	@Column(nullable = false, length = 8)
+	private String cepEmpresa;
+
 	@Column(nullable = false, length = 30)
 	private String logradouroEmpresa;
 
@@ -38,12 +41,20 @@ public class Empresas {
 
 	@Column(nullable = false, length = 2)
 	private String estadoEmpresa;
-	
+
 	@Column(nullable = false, length = 20)
 	private String usuarioEmpresa;
-	
+
 	@Column(nullable = false, length = 20)
 	private String senhaEmpresa;
+
+	public String getCepEmpresa() {
+		return cepEmpresa;
+	}
+
+	public void setCepEmpresa(String cepEmpresa) {
+		this.cepEmpresa = cepEmpresa;
+	}
 
 	public Long getIdEmpresa() {
 		return idEmpresa;

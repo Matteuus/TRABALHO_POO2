@@ -111,6 +111,13 @@ public class TelaPrincipal extends JFrame {
 		contentPane.add(btnSair);
 
 		JButton btnConfiguraes = new JButton("Configurações");
+		btnConfiguraes.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				FormConfiguracoes fc = new FormConfiguracoes(id);
+				fc.setVisible(true);
+				dispose();
+			}
+		});
 		btnConfiguraes.setBounds(667, 425, 115, 25);
 		contentPane.add(btnConfiguraes);
 	}

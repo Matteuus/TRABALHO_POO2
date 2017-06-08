@@ -7,9 +7,9 @@ import com.poo2.view.TelaPrincipal;
 
 public class Empresa {
 
-	public int addDados(String nomeEmpresa, String cnpjEmpresa, String telEmpresa, String logradouroEmpresa,
-			String bairroEmpresa, int numeroLogradouroEmpresa, String complementoEmpresa, String cidadeEmpresa,
-			String estadoEmpresa, String usuarioEmpresa, String senhaEmpresa) {
+	public int addDados(String nomeEmpresa, String cnpjEmpresa, String telEmpresa, String cepEmpresa,
+			String logradouroEmpresa, String bairroEmpresa, int numeroLogradouroEmpresa, String complementoEmpresa,
+			String cidadeEmpresa, String estadoEmpresa, String usuarioEmpresa, String senhaEmpresa) {
 
 		@SuppressWarnings("unused")
 		Empresas e = new Empresas();
@@ -24,6 +24,7 @@ public class Empresa {
 			empresa.setNomeEmpresa(nomeEmpresa);
 			empresa.setCnpjEmpresa(cnpjEmpresa);
 			empresa.setTelEmpresa(telEmpresa);
+			empresa.setCepEmpresa(cepEmpresa);
 			empresa.setLogradouroEmpresa(logradouroEmpresa);
 			empresa.setBairroEmpresa(bairroEmpresa);
 			empresa.setNumeroLogradouroEmpresa(numeroLogradouroEmpresa);
@@ -56,7 +57,7 @@ public class Empresa {
 		EmpresasDAO eDAO = new EmpresasDAO();
 		e = eDAO.Acesso(usuario, senha);
 		long id = 0;
-		
+
 		if (EmpresasDAO.acesso) {
 			JOptionPane.showMessageDialog(null, "Bem Vindo(a), " + e.getNomeEmpresa(), "Logado!",
 					JOptionPane.INFORMATION_MESSAGE);
@@ -68,6 +69,45 @@ public class Empresa {
 			JOptionPane.showMessageDialog(null, "Login ou Senha Incorretos");
 			return 0;
 		}
+	}
+
+	public int alterarDados(String nomeEmpresa, String cnpjEmpresa, String telEmpresa, String cepEmpresa,
+			String logradouroEmpresa, String bairroEmpresa, int numeroLogradouroEmpresa, String complementoEmpresa,
+			String cidadeEmpresa, String estadoEmpresa, String usuarioEmpresa, String senhaEmpresa, long id) {
+
+
+		int resultado = 0;
+
+		Empresas empresa = new Empresas();
+
+		empresa.setNomeEmpresa(nomeEmpresa);
+		empresa.setCnpjEmpresa(cnpjEmpresa);
+		empresa.setTelEmpresa(telEmpresa);
+		empresa.setCepEmpresa(cepEmpresa);
+		empresa.setLogradouroEmpresa(logradouroEmpresa);
+		empresa.setBairroEmpresa(bairroEmpresa);
+		empresa.setNumeroLogradouroEmpresa(numeroLogradouroEmpresa);
+		empresa.setComplementoEmpresa(complementoEmpresa);
+		empresa.setCidadeEmpresa(cidadeEmpresa);
+		empresa.setEstadoEmpresa(estadoEmpresa);
+		empresa.setUsuarioEmpresa(usuarioEmpresa);
+		empresa.setSenhaEmpresa(senhaEmpresa);
+		empresa.setIdEmpresa(id);
+		
+
+		DAO<Empresas> dao = new EmpresasDAO();
+
+		if (dao.alterar(empresa)) {
+			JOptionPane.showMessageDialog(null, "Alterado com sucesso!", "Sucesso!", JOptionPane.INFORMATION_MESSAGE);
+			resultado = 1;
+			TelaLogin tl = new TelaLogin();
+			tl.setVisible(true);
+		} else {
+			JOptionPane.showMessageDialog(null, "Falha ao Alterar!", "Falha!", JOptionPane.ERROR_MESSAGE);
+			resultado = 0;
+		}
+
+		return resultado;
 	}
 
 }
