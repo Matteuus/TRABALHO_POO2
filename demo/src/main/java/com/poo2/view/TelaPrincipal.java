@@ -58,7 +58,7 @@ public class TelaPrincipal extends JFrame {
 		JMenuItem mntmCompra = new JMenuItem("Compra");
 		mntmCompra.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				ListaCompras lp = new ListaCompras();
+				ListaCompras lp = new ListaCompras(id);
 				lp.setVisible(true);
 				dispose();
 			}
@@ -118,7 +118,7 @@ public class TelaPrincipal extends JFrame {
 				dispose();
 			}
 		});
-		btnConfiguraes.setBounds(667, 425, 115, 25);
+		btnConfiguraes.setBounds(654, 425, 130, 25);
 		contentPane.add(btnConfiguraes);
 	}
 }

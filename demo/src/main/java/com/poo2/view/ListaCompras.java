@@ -10,6 +10,9 @@ import com.poo2.tableModel.ProdutoTableModel;
 import javax.swing.JTable;
 import javax.swing.WindowConstants;
 import java.awt.Font;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class ListaCompras extends JFrame {
 
@@ -17,6 +20,7 @@ public class ListaCompras extends JFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	protected static final long Long = 0;
 	private JPanel contentPane;
 	private JTable table;
 
@@ -34,7 +38,7 @@ public class ListaCompras extends JFrame {
 			@Override
 			public void run() {
 				try {
-					ListaCompras frame = new ListaCompras();
+					ListaCompras frame = new ListaCompras(Long);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -46,7 +50,7 @@ public class ListaCompras extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public ListaCompras() {
+	public ListaCompras(long id) {
 		setTitle("Lista de Produtos");
 		setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 810, 510);
@@ -63,6 +67,17 @@ public class ListaCompras extends JFrame {
 		JScrollPane scrollPane = new JScrollPane(table);
 		scrollPane.setBounds(10, 36, 770, 365);
 		contentPane.add(scrollPane);
+		
+		JButton btnVoltar = new JButton("Voltar");
+		btnVoltar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				TelaPrincipal tp = new TelaPrincipal(id);
+				tp.setVisible(true);
+				dispose();
+			}
+		});
+		btnVoltar.setBounds(10, 437, 89, 23);
+		contentPane.add(btnVoltar);
 		PreencherTabela();
 	}
 }
