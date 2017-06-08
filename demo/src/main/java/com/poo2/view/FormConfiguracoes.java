@@ -276,5 +276,33 @@ public class FormConfiguracoes extends JFrame {
 		ctComplemento.setBounds(631, 197, 149, 20);
 		contentPane.add(ctComplemento);
 		
+		JButton btnExcluirConta = new JButton("Excluir conta");
+		btnExcluirConta.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				
+				int i = JOptionPane.showConfirmDialog(null, "Deseja Excluir sua Empresa?", "Selecione uma Opção",
+						JOptionPane.OK_CANCEL_OPTION);
+				
+				if (i == JOptionPane.YES_OPTION) {
+					dispose();
+					TelaLogin tl = new TelaLogin();
+					tl.setVisible(true);
+					@SuppressWarnings("unused")
+					Empresas empresa = new Empresas();
+					EmpresasDAO edao = new EmpresasDAO();
+					empresa = edao.Deletarempresa(id);
+					
+					
+				}
+				else if (i == JOptionPane.NO_OPTION){
+				}
+				
+			}
+			
+		});
+		btnExcluirConta.setBounds(318, 427, 113, 23);
+		contentPane.add(btnExcluirConta);
+		
 	}
 }
