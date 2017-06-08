@@ -2,10 +2,12 @@ package com.poo2.contoller;
 
 import javax.swing.JOptionPane;
 import com.poo2.model.Empresas;
+import com.poo2.view.TelaLogin;
+import com.poo2.view.TelaPrincipal;
 
 public class Empresa {
 
-	public void addDados(String nomeEmpresa, String cnpjEmpresa, String telEmpresa, String logradouroEmpresa,
+	public int addDados(String nomeEmpresa, String cnpjEmpresa, String telEmpresa, String logradouroEmpresa,
 			String bairroEmpresa, int numeroLogradouroEmpresa, String complementoEmpresa, String cidadeEmpresa,
 			String estadoEmpresa, String usuarioEmpresa, String senhaEmpresa) {
 
@@ -13,6 +15,7 @@ public class Empresa {
 		Empresas e = new Empresas();
 		EmpresasDAO eDAO = new EmpresasDAO();
 		e = eDAO.Verificempresa(usuarioEmpresa);
+		int resultado = 0;
 		if (EmpresasDAO.verificaempresa) {
 			JOptionPane.showMessageDialog(null, "Nome de usuário já existente, por favor, altere seu nome de usuário!");
 		} else {
@@ -35,14 +38,19 @@ public class Empresa {
 			if (dao.salvar(empresa)) {
 				JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!", "Sucesso!",
 						JOptionPane.INFORMATION_MESSAGE);
+				resultado = 1;
+				TelaLogin tl = new TelaLogin();
+				tl.setVisible(true);
 			} else {
 				JOptionPane.showMessageDialog(null, "Falha ao cadastrar!", "Falha!", JOptionPane.ERROR_MESSAGE);
+				resultado = 0;
 			}
 
 		}
+		return resultado;
 	}
 
-	public long verificarLogin(String usuario, String senha) {
+	public int verificarLogin(String usuario, String senha) {
 
 		Empresas e = new Empresas();
 		EmpresasDAO eDAO = new EmpresasDAO();
@@ -53,11 +61,13 @@ public class Empresa {
 			JOptionPane.showMessageDialog(null, "Bem Vindo(a), " + e.getNomeEmpresa(), "Logado!",
 					JOptionPane.INFORMATION_MESSAGE);
 			id = e.getIdEmpresa();
-
+			TelaPrincipal tp = new TelaPrincipal(id);
+			tp.setVisible(true);
+			return 1;
 		} else {
 			JOptionPane.showMessageDialog(null, "Login ou Senha Incorretos");
+			return 0;
 		}
-		return id;
 	}
 
 }

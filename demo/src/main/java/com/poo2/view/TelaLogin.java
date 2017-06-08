@@ -70,15 +70,15 @@ public class TelaLogin extends JFrame {
 
 		JButton btnEntrar = new JButton("Entrar");
 		btnEntrar.addActionListener(new ActionListener() {
+			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent arg0) {
-				
+
 				Empresa e = new Empresa();
-				@SuppressWarnings("deprecation")
-				long id = e.verificarLogin(ctLogin.getText(), ctSenha.getText());
-				TelaPrincipal tp = new TelaPrincipal(id);
-				tp.setVisible(true);
-				dispose();
-				
+				int num = e.verificarLogin(ctLogin.getText(), ctSenha.getText());
+				if (num == 1) {
+					dispose();
+				}
+
 			}
 		});
 		btnEntrar.setBounds(340, 325, 97, 25);
@@ -96,7 +96,7 @@ public class TelaLogin extends JFrame {
 		});
 		btnCadastrar.setBounds(340, 361, 97, 25);
 		contentPane.add(btnCadastrar);
-		
+
 		ctSenha = new JPasswordField();
 		ctSenha.setBounds(340, 271, 116, 22);
 		contentPane.add(ctSenha);
