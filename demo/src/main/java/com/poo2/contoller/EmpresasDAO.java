@@ -93,9 +93,9 @@ public class EmpresasDAO extends GenericDAO<Empresas> {
 
 	public static boolean buscarempresa;
 
-	public Empresas Buscarempresa(long idEmpresa) {
+	public String Buscarempresa(long idEmpresa) {
 
-		Empresas user = new Empresas();
+		String nome = "";
 
 		Connection conn = null;
 		Statement consulta = null;
@@ -111,19 +111,8 @@ public class EmpresasDAO extends GenericDAO<Empresas> {
 			tabela = consulta.executeQuery("SELECT * FROM empresas WHERE idEmpresa ='" + idEmpresa + "'");
 
 			if (tabela.next()) {
-				user.setIdEmpresa(tabela.getLong("idEmpresa"));
-				user.setNomeEmpresa(tabela.getString("nomeEmpresa"));
-				user.setCnpjEmpresa(tabela.getString("cnpjEmpresa"));
-				user.setTelEmpresa(tabela.getString("telEmpresa"));
-				user.setLogradouroEmpresa(tabela.getString("logradouroEmpresa"));
-				user.setBairroEmpresa(tabela.getString("bairroEmpresa"));
-				user.setNumeroLogradouroEmpresa(tabela.getInt("numeroLogradouroEmpresa"));
-				user.setComplementoEmpresa(tabela.getString("complementoEmpresa"));
-				user.setCidadeEmpresa(tabela.getString("cidadeEmpresa"));
-				user.setEstadoEmpresa(tabela.getString("estadoEmpresa"));
-				user.setUsuarioEmpresa(tabela.getString("usuarioEmpresa"));
-				user.setSenhaEmpresa(tabela.getString("senhaEmpresa"));
-
+				
+				nome = tabela.getString("nomeEmpresa");
 				buscarempresa = true;
 			} else {
 				buscarempresa = false;
@@ -132,7 +121,7 @@ public class EmpresasDAO extends GenericDAO<Empresas> {
 		} catch (ClassNotFoundException | SQLException e) {
 			e.getMessage();
 		}
-		return user;
+		return nome;
 
 	}
 

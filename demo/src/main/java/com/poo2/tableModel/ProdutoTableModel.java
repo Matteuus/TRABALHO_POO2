@@ -5,6 +5,7 @@
  */
 package com.poo2.tableModel;
 
+import com.poo2.contoller.EmpresasDAO;
 import com.poo2.model.*;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
@@ -44,11 +45,12 @@ public class ProdutoTableModel extends AbstractTableModel {
 		case 0:
 			return produto.getIdProduto();
 		case 1:
-			return produto.getIdEmpresa();
-		case 2:
 			return produto.getNomeProduto();
+		case 2:
+			EmpresasDAO pd = new EmpresasDAO();
+			return pd.Buscarempresa(produto.getIdEmpresa());
 		case 3:
-			return produto.getCategoriaProduto();
+			return produto.getEstoqueProduto();
 		case 4:
 			return produto.getValorProduto();
 		case 5:

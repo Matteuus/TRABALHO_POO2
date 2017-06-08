@@ -81,6 +81,13 @@ public class TelaPrincipal extends JFrame {
 		menuBar.add(mnLista);
 		
 		JMenuItem mntmProdutos = new JMenuItem("Produtos");
+		mntmProdutos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				ListaProdutos lp = new ListaProdutos();
+				lp.setVisible(true);
+				dispose();
+			}
+		});
 		mnLista.add(mntmProdutos);
 		
 		JButton btnSair = new JButton("Sair");
