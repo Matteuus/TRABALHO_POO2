@@ -6,9 +6,10 @@ import com.poo2.model.Produtos;
 
 public class VendaProduto {
 
-	public void addDados(long idEmpresa, String nomeProduto, String categoriaProduto, float valorProduto,
+	public int addDados(long idEmpresa, String nomeProduto, String categoriaProduto, float valorProduto,
 			int estoqueProduto) {
-
+		
+		int resultado = 0;
 		Produtos p = new Produtos();
 
 		p.setIdEmpresa(idEmpresa);
@@ -21,10 +22,12 @@ public class VendaProduto {
 
 		if (dao.salvar(p)) {
 			JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!", "Sucesso!", JOptionPane.INFORMATION_MESSAGE);
+			resultado = 1;
 		} else {
 			JOptionPane.showMessageDialog(null, "Falha ao cadastrar!", "Falha!", JOptionPane.ERROR_MESSAGE);
+			resultado = 0;
 		}
-
+		return resultado;
 	}
 
 }

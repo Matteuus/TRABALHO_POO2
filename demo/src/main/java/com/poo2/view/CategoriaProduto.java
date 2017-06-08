@@ -9,7 +9,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class FormCompraProduto extends JFrame {
+public class CategoriaProduto extends JFrame {
 
 	/**
 	 * 
@@ -25,7 +25,7 @@ public class FormCompraProduto extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					FormCompraProduto frame = new FormCompraProduto(Long);
+					CategoriaProduto frame = new CategoriaProduto(Long);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -37,7 +37,7 @@ public class FormCompraProduto extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public FormCompraProduto(long id) {
+	public CategoriaProduto(long id) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 810, 510);
 		contentPane = new JPanel();

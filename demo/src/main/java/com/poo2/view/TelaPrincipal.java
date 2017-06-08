@@ -61,7 +61,7 @@ public class TelaPrincipal extends JFrame {
 		JMenuItem mntmVenda = new JMenuItem("Venda");
 		mntmVenda.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				FormCompraProduto fcp = new FormCompraProduto(id);
+				CategoriaProduto fcp = new CategoriaProduto(id);
 				fcp.setVisible(true);
 				dispose();
 			}

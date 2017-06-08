@@ -94,7 +94,7 @@ public class FormVendaProduto extends JFrame {
 		JButton btnVoltar = new JButton("Voltar");
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				FormCompraProduto fcp = new FormCompraProduto(id);
+				CategoriaProduto fcp = new CategoriaProduto(id);
 				fcp.setVisible(true);
 				dispose();
 			}
@@ -110,7 +110,12 @@ public class FormVendaProduto extends JFrame {
 				float valor = Float.valueOf(valorAux).floatValue();
 				String qtdAux = ctQtdProduto.getText();
 				int qtd = Integer.valueOf(qtdAux).intValue();
-				vd.addDados(id, ctNomeProduto.getText(), categoria, valor, qtd);
+				int resultado = vd.addDados(id, ctNomeProduto.getText(), categoria, valor, qtd);
+				if (resultado == 1) {
+					TelaPrincipal tl = new TelaPrincipal(id);
+					tl.setVisible(true);
+					dispose();
+				}
 			}
 		});
 		btnSalvarProduto.setBounds(660, 425, 120, 25);
