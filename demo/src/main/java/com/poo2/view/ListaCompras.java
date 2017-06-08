@@ -51,7 +51,7 @@ public class ListaCompras extends JFrame {
 	 * Create the frame.
 	 */
 	public ListaCompras(long id) {
-		setTitle("Lista de Produtos");
+		setTitle("Lista de Compras");
 		setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 810, 510);
 		contentPane = new JPanel();

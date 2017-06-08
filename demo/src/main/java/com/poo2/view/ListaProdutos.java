@@ -5,11 +5,14 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
-import com.poo2.contoller.RelatorioDAO;
-import com.poo2.tableModel.CompraTableModel;
+import com.poo2.contoller.ProdutosDAO;
+import com.poo2.tableModel.ProdutoTableModel;
 import javax.swing.JTable;
 import javax.swing.WindowConstants;
 import java.awt.Font;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class ListaProdutos extends JFrame {
 
@@ -22,9 +25,9 @@ public class ListaProdutos extends JFrame {
 	private JTable table;
 
 	private void PreencherTabela() {
-		RelatorioDAO rd = new RelatorioDAO();
-		CompraTableModel ctm = new CompraTableModel(rd.lista());
-		table.setModel(ctm);
+		ProdutosDAO pd = new ProdutosDAO();
+		ProdutoTableModel ptm = new ProdutoTableModel(pd.lista());
+		table.setModel(ptm);
 	}
 
 	/**
@@ -35,7 +38,7 @@ public class ListaProdutos extends JFrame {
 			@Override
 			public void run() {
 				try {
-					ListaProdutos frame = new ListaProdutos(Long);
+					ListaCompras frame = new ListaCompras(Long);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -64,6 +67,17 @@ public class ListaProdutos extends JFrame {
 		JScrollPane scrollPane = new JScrollPane(table);
 		scrollPane.setBounds(10, 36, 770, 365);
 		contentPane.add(scrollPane);
+		
+		JButton btnVoltar = new JButton("Voltar");
+		btnVoltar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				TelaPrincipal tp = new TelaPrincipal(id);
+				tp.setVisible(true);
+				dispose();
+			}
+		});
+		btnVoltar.setBounds(10, 437, 89, 23);
+		contentPane.add(btnVoltar);
 		PreencherTabela();
 	}
 }

@@ -53,8 +53,6 @@ public class ProdutoTableModel extends AbstractTableModel {
 			return produto.getEstoqueProduto();
 		case 4:
 			return produto.getValorProduto();
-		case 5:
-			return produto.getEstoqueProduto();
 		}
 		return null;
 	}
@@ -74,8 +72,6 @@ public class ProdutoTableModel extends AbstractTableModel {
 			return nomeColunas[3];
 		case 4:
 			return nomeColunas[4];
-		case 5:
-			return nomeColunas[5];
 		}
 		return "";
 	}
