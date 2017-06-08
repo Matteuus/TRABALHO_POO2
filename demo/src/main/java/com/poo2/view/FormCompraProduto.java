@@ -6,6 +6,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class FormCompraProduto extends JFrame {
 
@@ -13,6 +15,7 @@ public class FormCompraProduto extends JFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	protected static final long Long = 0;
 	private JPanel contentPane;
 
 	/**
@@ -22,7 +25,7 @@ public class FormCompraProduto extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					FormCompraProduto frame = new FormCompraProduto();
+					FormCompraProduto frame = new FormCompraProduto(Long);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -34,7 +37,7 @@ public class FormCompraProduto extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public FormCompraProduto() {
+	public FormCompraProduto(long id) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 810, 510);
 		contentPane = new JPanel();
@@ -47,26 +50,74 @@ public class FormCompraProduto extends JFrame {
 		contentPane.add(btnVoltar);
 		
 		JButton btnComprar = new JButton("Categoria A");
+		btnComprar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String categoria = "A";
+				FormVendaProduto fvp = new FormVendaProduto(categoria, id);
+				fvp.setVisible(true);
+				dispose();
+			}
+		});
 		btnComprar.setBounds(12, 13, 109, 25);
 		contentPane.add(btnComprar);
 		
 		JButton btnCategoriaB = new JButton("Categoria B");
+		btnCategoriaB.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String categoria = "B";
+				FormVendaProduto fvp = new FormVendaProduto(categoria, id);
+				fvp.setVisible(true);
+				dispose();
+			}
+		});
 		btnCategoriaB.setBounds(133, 13, 109, 25);
 		contentPane.add(btnCategoriaB);
 		
 		JButton btnCategoriaC = new JButton("Categoria C");
+		btnCategoriaC.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String categoria = "C";
+				FormVendaProduto fvp = new FormVendaProduto(categoria, id);
+				fvp.setVisible(true);
+				dispose();
+			}
+		});
 		btnCategoriaC.setBounds(254, 13, 109, 25);
 		contentPane.add(btnCategoriaC);
 		
 		JButton btnCategoriaD = new JButton("Categoria D");
+		btnCategoriaD.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String categoria = "D";
+				FormVendaProduto fvp = new FormVendaProduto(categoria, id);
+				fvp.setVisible(true);
+				dispose();
+			}
+		});
 		btnCategoriaD.setBounds(375, 13, 109, 25);
 		contentPane.add(btnCategoriaD);
 		
 		JButton btnCategoriaE = new JButton("Categoria E");
+		btnCategoriaE.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String categoria = "E";
+				FormVendaProduto fvp = new FormVendaProduto(categoria, id);
+				fvp.setVisible(true);
+				dispose();
+			}
+		});
 		btnCategoriaE.setBounds(496, 13, 109, 25);
 		contentPane.add(btnCategoriaE);
 		
 		JButton btnCategoriaF = new JButton("Categoria F");
+		btnCategoriaF.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String categoria = "F";
+				FormVendaProduto fvp = new FormVendaProduto(categoria, id);
+				fvp.setVisible(true);
+				dispose();
+			}
+		});
 		btnCategoriaF.setBounds(617, 13, 109, 25);
 		contentPane.add(btnCategoriaF);
 	}

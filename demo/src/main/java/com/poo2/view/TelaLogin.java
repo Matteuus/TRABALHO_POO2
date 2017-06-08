@@ -5,10 +5,15 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import com.poo2.contoller.Empresa;
+
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class TelaLogin extends JFrame {
 
@@ -17,8 +22,8 @@ public class TelaLogin extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
+	private JTextField ctLogin;
+	private JTextField ctSenha;
 
 	/**
 	 * Launch the application.
@@ -46,32 +51,52 @@ public class TelaLogin extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
-		JLabel lblSenha = new JLabel("Senha");
-		lblSenha.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblSenha.setBounds(275, 269, 67, 22);
-		contentPane.add(lblSenha);
-		
-		textField = new JTextField();
-		textField.setBounds(340, 226, 116, 22);
-		contentPane.add(textField);
-		textField.setColumns(10);
-		
-		textField_1 = new JTextField();
-		textField_1.setBounds(340, 269, 116, 22);
-		contentPane.add(textField_1);
-		textField_1.setColumns(10);
-		
+
 		JLabel lblLogin = new JLabel("Login");
 		lblLogin.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblLogin.setBounds(275, 226, 64, 22);
 		contentPane.add(lblLogin);
-		
+
+		ctLogin = new JTextField();
+		ctLogin.setBounds(340, 226, 116, 22);
+		contentPane.add(ctLogin);
+		ctLogin.setColumns(10);
+
+		JLabel lblSenha = new JLabel("Senha");
+		lblSenha.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblSenha.setBounds(275, 269, 67, 22);
+		contentPane.add(lblSenha);
+
+		ctSenha = new JTextField();
+		ctSenha.setBounds(340, 269, 116, 22);
+		contentPane.add(ctSenha);
+		ctSenha.setColumns(10);
+
 		JButton btnEntrar = new JButton("Entrar");
+		btnEntrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				Empresa e = new Empresa();
+				long id = e.verificarLogin(ctLogin.getText(), ctSenha.getText());
+				TelaPrincipal tp = new TelaPrincipal(id);
+				tp.setVisible(true);
+				dispose();
+				
+			}
+		});
 		btnEntrar.setBounds(340, 325, 97, 25);
 		contentPane.add(btnEntrar);
-		
+
 		JButton btnCadastrar = new JButton("Cadastrar");
+		btnCadastrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+
+				FormCadEmpresa fce = new FormCadEmpresa();
+				fce.setVisible(true);
+				dispose();
+
+			}
+		});
 		btnCadastrar.setBounds(340, 361, 97, 25);
 		contentPane.add(btnCadastrar);
 	}

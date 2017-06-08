@@ -9,7 +9,8 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JButton;
-import javax.swing.JLabel;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class TelaPrincipal extends JFrame {
 
@@ -17,6 +18,7 @@ public class TelaPrincipal extends JFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	protected static final long Long = 0;
 	private JPanel contentPane;
 
 	/**
@@ -26,7 +28,7 @@ public class TelaPrincipal extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					TelaPrincipal frame = new TelaPrincipal();
+					TelaPrincipal frame = new TelaPrincipal(Long);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -38,7 +40,7 @@ public class TelaPrincipal extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public TelaPrincipal() {
+	public TelaPrincipal(long id) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 810, 510);
 		contentPane = new JPanel();
@@ -57,6 +59,13 @@ public class TelaPrincipal extends JFrame {
 		mnNova.add(mntmCompra);
 		
 		JMenuItem mntmVenda = new JMenuItem("Venda");
+		mntmVenda.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				FormCompraProduto fcp = new FormCompraProduto(id);
+				fcp.setVisible(true);
+				dispose();
+			}
+		});
 		mnNova.add(mntmVenda);
 		
 		JMenu mnRelatrio = new JMenu("Relatório");
@@ -81,9 +90,5 @@ public class TelaPrincipal extends JFrame {
 		JButton btnConfiguraes = new JButton("Configurações");
 		btnConfiguraes.setBounds(667, 425, 115, 25);
 		contentPane.add(btnConfiguraes);
-		
-		JLabel lblBemVindo = new JLabel("Bem Vindo, ");
-		lblBemVindo.setBounds(667, 40, 113, 16);
-		contentPane.add(lblBemVindo);
 	}
 }

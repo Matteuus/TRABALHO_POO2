@@ -25,7 +25,7 @@ public class Produtos {
 	private float valorProduto;
 
 	@Column(nullable = false)
-	private String estoqueProduto;
+	private int estoqueProduto;
 
 	public Long getIdProduto() {
 		return idProduto;
@@ -67,11 +67,11 @@ public class Produtos {
 		this.valorProduto = valorProduto;
 	}
 
-	public String getEstoqueProduto() {
+	public int getEstoqueProduto() {
 		return estoqueProduto;
 	}
 
-	public void setEstoqueProduto(String estoqueProduto) {
+	public void setEstoqueProduto(int estoqueProduto) {
 		this.estoqueProduto = estoqueProduto;
 	}
 

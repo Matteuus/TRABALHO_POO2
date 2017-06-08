@@ -5,11 +5,15 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import com.poo2.contoller.VendaProduto;
+
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
-import javax.swing.JComboBox;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class FormVendaProduto extends JFrame {
 
@@ -17,11 +21,13 @@ public class FormVendaProduto extends JFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = 7;
+	protected static final String String = null;
+	protected static final long Long = 0;
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_2;
-	private JLabel lblPreounidade;
-	private JTextField textField_3;
+	private JTextField ctNomeProduto;
+	private JTextField ctQtdProduto;
+	private JLabel lbValor;
+	private JTextField ctValorProduto;
 
 	/**
 	 * Launch the application.
@@ -30,7 +36,7 @@ public class FormVendaProduto extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					FormVendaProduto frame = new FormVendaProduto();
+					FormVendaProduto frame = new FormVendaProduto(String, Long);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -42,7 +48,7 @@ public class FormVendaProduto extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public FormVendaProduto() {
+	public FormVendaProduto(String categoria, long id) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 810, 510);
 		contentPane = new JPanel();
@@ -50,54 +56,63 @@ public class FormVendaProduto extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		JLabel lblBanco = new JLabel("Nome");
-		lblBanco.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblBanco.setBounds(10, 11, 46, 22);
-		contentPane.add(lblBanco);
-
-		JLabel lblAgncia = new JLabel("Categoria");
-		lblAgncia.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblAgncia.setBounds(10, 69, 92, 20);
-		contentPane.add(lblAgncia);
-
-		JLabel lblContaCorrente = new JLabel("Quantidade");
-		lblContaCorrente.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblContaCorrente.setBounds(10, 137, 110, 20);
-		contentPane.add(lblContaCorrente);
-
-		textField = new JTextField();
-		textField.setBounds(10, 36, 390, 20);
-		contentPane.add(textField);
-		textField.setColumns(10);
-
-		textField_2 = new JTextField();
-		textField_2.setBounds(10, 170, 102, 20);
-		contentPane.add(textField_2);
-		textField_2.setColumns(10);
+		JLabel lbNomeProduto = new JLabel("Nome");
+		lbNomeProduto.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lbNomeProduto.setBounds(12, 46, 46, 22);
+		contentPane.add(lbNomeProduto);
 		
-		lblPreounidade = new JLabel("Valor R$");
-		lblPreounidade.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblPreounidade.setBounds(10, 203, 110, 20);
-		contentPane.add(lblPreounidade);
+				ctNomeProduto = new JTextField();
+				ctNomeProduto.setBounds(12, 70, 390, 20);
+				contentPane.add(ctNomeProduto);
+				ctNomeProduto.setColumns(10);
+
+		JLabel lbCategoria = new JLabel("Categoria: " + categoria);
+		lbCategoria.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lbCategoria.setBounds(12, 13, 390, 20);
+		contentPane.add(lbCategoria);
+
+		JLabel lbQtd = new JLabel("Quantidade");
+		lbQtd.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lbQtd.setBounds(12, 103, 110, 20);
+		contentPane.add(lbQtd);
+
+		ctQtdProduto = new JTextField();
+		ctQtdProduto.setBounds(12, 136, 102, 20);
+		contentPane.add(ctQtdProduto);
+		ctQtdProduto.setColumns(10);
 		
-		textField_3 = new JTextField();
-		textField_3.setColumns(10);
-		textField_3.setBounds(10, 236, 102, 20);
-		contentPane.add(textField_3);
+		lbValor = new JLabel("Valor R$");
+		lbValor.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lbValor.setBounds(12, 169, 110, 20);
+		contentPane.add(lbValor);
 		
-		JComboBox<String> comboBox = new JComboBox<String>();
-		comboBox.addItem("Selecione");
-		comboBox.addItem("Item 1");
-		comboBox.addItem("Item 2");
-		comboBox.addItem("Item 3");
-		comboBox.setBounds(10, 102, 102, 22);
-		contentPane.add(comboBox);
+		ctValorProduto = new JTextField();
+		ctValorProduto.setColumns(10);
+		ctValorProduto.setBounds(12, 202, 102, 20);
+		contentPane.add(ctValorProduto);
 		
 		JButton btnVoltar = new JButton("Voltar");
+		btnVoltar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				FormCompraProduto fcp = new FormCompraProduto(id);
+				fcp.setVisible(true);
+				dispose();
+			}
+		});
 		btnVoltar.setBounds(12, 425, 97, 25);
 		contentPane.add(btnVoltar);
 		
 		JButton btnSalvarProduto = new JButton("Salvar Produto");
+		btnSalvarProduto.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				VendaProduto vd = new VendaProduto();
+				String valorAux = ctValorProduto.getText();
+				float valor = Float.valueOf(valorAux).floatValue();
+				String qtdAux = ctQtdProduto.getText();
+				int qtd = Integer.valueOf(qtdAux).intValue();
+				vd.addDados(id, ctNomeProduto.getText(), categoria, valor, qtd);
+			}
+		});
 		btnSalvarProduto.setBounds(660, 425, 120, 25);
 		contentPane.add(btnSalvarProduto);
 	}

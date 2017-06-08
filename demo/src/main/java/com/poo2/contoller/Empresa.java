@@ -42,4 +42,22 @@ public class Empresa {
 		}
 	}
 
+	public long verificarLogin(String usuario, String senha) {
+
+		Empresas e = new Empresas();
+		EmpresasDAO eDAO = new EmpresasDAO();
+		e = eDAO.Acesso(usuario, senha);
+		long id = 0;
+		
+		if (EmpresasDAO.acesso) {
+			JOptionPane.showMessageDialog(null, "Bem Vindo(a), " + e.getNomeEmpresa(), "Logado!",
+					JOptionPane.INFORMATION_MESSAGE);
+			id = e.getIdEmpresa();
+
+		} else {
+			JOptionPane.showMessageDialog(null, "Login ou Senha Incorretos");
+		}
+		return id;
+	}
+
 }
