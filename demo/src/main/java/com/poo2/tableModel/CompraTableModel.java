@@ -5,7 +5,7 @@
  */
 package com.poo2.tableModel;
 
-import com.poo2.contoller.RelatorioDAO;
+import com.poo2.contoller.EmpresasDAO;
 import com.poo2.model.*;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
@@ -19,7 +19,7 @@ public class CompraTableModel extends AbstractTableModel {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private String nomeColunas[] = { "ID", "Produto", "Empresa", "Quantidade", "Valor(Unidade)" };
+	private String nomeColunas[] = { "ID", "Produto", "Empresa", "Quantidade", "Valor(Unitário)" };
 	private List<Produtos> compras;
 
 	public CompraTableModel(List<Produtos> compras) {
@@ -38,9 +38,8 @@ public class CompraTableModel extends AbstractTableModel {
 
 	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
+		
 		Produtos compra = compras.get(rowIndex);
-		RelatorioDAO rd = new RelatorioDAO();
-		compra = rd.Buscarproduto(rowIndex);
 
 		switch (columnIndex) {
 
@@ -49,7 +48,8 @@ public class CompraTableModel extends AbstractTableModel {
 		case 1:
 			return compra.getNomeProduto();
 		case 2:
-			return compra.getCategoriaProduto();
+			EmpresasDAO pd = new EmpresasDAO();
+			return pd.Buscarempresa(compra.getIdEmpresa());
 		case 3:
 			return compra.getEstoqueProduto();
 		case 4:

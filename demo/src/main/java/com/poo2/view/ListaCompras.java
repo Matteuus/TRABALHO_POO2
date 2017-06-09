@@ -6,7 +6,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 import com.poo2.contoller.ProdutosDAO;
-import com.poo2.tableModel.ProdutoTableModel;
+import com.poo2.tableModel.CompraTableModel;
 import javax.swing.JTable;
 import javax.swing.WindowConstants;
 import java.awt.Font;
@@ -14,6 +14,8 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.SystemColor;
+import javax.swing.JLabel;
+import javax.swing.ImageIcon;
 
 public class ListaCompras extends JFrame {
 
@@ -24,10 +26,11 @@ public class ListaCompras extends JFrame {
 	protected static final long Long = 0;
 	private JPanel contentPane;
 	private JTable table;
+	private JLabel lblFundo;
 
 	private void PreencherTabela() {
 		ProdutosDAO pd = new ProdutosDAO();
-		ProdutoTableModel ptm = new ProdutoTableModel(pd.lista());
+		CompraTableModel ptm = new CompraTableModel(pd.lista());
 		table.setModel(ptm);
 	}
 
@@ -53,7 +56,7 @@ public class ListaCompras extends JFrame {
 	 */
 	public ListaCompras(long id) {
 		setTitle("Lista de Compras");
-		setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+		setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 		setBounds(100, 100, 810, 510);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -61,7 +64,7 @@ public class ListaCompras extends JFrame {
 		contentPane.setLayout(null);
 
 		table = new JTable();
-		table.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		table.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		table.setBounds(10, 50, 414, 143);
 		contentPane.add(table);
 
@@ -81,6 +84,11 @@ public class ListaCompras extends JFrame {
 		});
 		btnVoltar.setBounds(12, 421, 116, 30);
 		contentPane.add(btnVoltar);
+		
+		lblFundo = new JLabel("");
+		lblFundo.setIcon(new ImageIcon(ListaCompras.class.getResource("/com/poo2/img/fundo1.jpeg")));
+		lblFundo.setBounds(0, 0, 792, 463);
+		contentPane.add(lblFundo);
 		PreencherTabela();
 	}
 }

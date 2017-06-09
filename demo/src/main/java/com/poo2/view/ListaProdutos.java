@@ -8,6 +8,7 @@ import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 import com.poo2.contoller.ProdutosDAO;
 import com.poo2.tableModel.ProdutoTableModel;
+
 import javax.swing.JTable;
 import javax.swing.WindowConstants;
 import java.awt.Font;
@@ -31,9 +32,9 @@ public class ListaProdutos extends JFrame {
 	private JTable table;
 	private JLabel lblFundo;
 
-	private void PreencherTabela() {
+	private void PreencherTabela(long id) {
 		ProdutosDAO pd = new ProdutosDAO();
-		ProdutoTableModel ptm = new ProdutoTableModel(pd.lista());
+		ProdutoTableModel ptm = new ProdutoTableModel(pd.listar("idEmpresa", id));
 		table.setModel(ptm);
 	}
 
@@ -93,10 +94,10 @@ public class ListaProdutos extends JFrame {
 		btnVoltar.setBounds(12, 421, 116, 30);
 		contentPane.add(btnVoltar);
 
-		lblFundo = new JLabel("New label");
+		lblFundo = new JLabel("");
 		lblFundo.setIcon(new ImageIcon(ListaProdutos.class.getResource("/com/poo2/img/fundo1.jpeg")));
 		lblFundo.setBounds(0, 0, 792, 463);
 		contentPane.add(lblFundo);
-		PreencherTabela();
+		PreencherTabela(id);
 	}
 }
