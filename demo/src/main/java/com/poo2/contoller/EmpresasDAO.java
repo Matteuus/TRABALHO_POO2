@@ -111,7 +111,7 @@ public class EmpresasDAO extends GenericDAO<Empresas> {
 			tabela = consulta.executeQuery("SELECT * FROM empresas WHERE idEmpresa ='" + idEmpresa + "'");
 
 			if (tabela.next()) {
-				
+
 				nome = tabela.getString("nomeEmpresa");
 				buscarempresa = true;
 			} else {
@@ -124,7 +124,6 @@ public class EmpresasDAO extends GenericDAO<Empresas> {
 		return nome;
 
 	}
-	
 
 	public static boolean buscarempresa2;
 
@@ -172,12 +171,11 @@ public class EmpresasDAO extends GenericDAO<Empresas> {
 
 	}
 
-
 	public static boolean alterarempresa;
 
-	public Empresas Alterarempresa(String nomeEmpresa, String cnpjEmpresa, String telEmpresa, String cepEmpresa, String logradouroEmpresa,
-			String bairroEmpresa, int numeroLogradouroEmpresa, String complementoEmpresa, String cidadeEmpresa,
-			String estadoEmpresa, String usuarioEmpresa, String senhaEmpresa, long idEmpresa) {
+	public Empresas Alterarempresa(String nomeEmpresa, String cnpjEmpresa, String telEmpresa, String cepEmpresa,
+			String logradouroEmpresa, String bairroEmpresa, int numeroLogradouroEmpresa, String complementoEmpresa,
+			String cidadeEmpresa, String estadoEmpresa, String usuarioEmpresa, String senhaEmpresa, long idEmpresa) {
 
 		Empresas user = new Empresas();
 		Connection conn = null;
@@ -192,11 +190,11 @@ public class EmpresasDAO extends GenericDAO<Empresas> {
 			consulta = conn.createStatement();
 
 			tabela = consulta.executeUpdate("UPDATE empresas SET nomeEmpresa = '" + nomeEmpresa + "', cnpjEmpresa = '"
-					+ cnpjEmpresa + "', telEmpresa = '" + telEmpresa + "', cepEmpresa = '" + cepEmpresa + "', logradouroEmpresa = '" + logradouroEmpresa
-					+ "', bairroEmpresa = '" + bairroEmpresa + "', numeroLogradouroEmpresa = '"
-					+ numeroLogradouroEmpresa + "', complementoEmpresa = '" + complementoEmpresa
-					+ "', cidadeEmpresa = '" + cidadeEmpresa + "', estadoEmpresa = '" + estadoEmpresa
-					+ "', usuarioEmpresa = '" + usuarioEmpresa + "', senhaEmpresa = '" + senhaEmpresa
+					+ cnpjEmpresa + "', telEmpresa = '" + telEmpresa + "', cepEmpresa = '" + cepEmpresa
+					+ "', logradouroEmpresa = '" + logradouroEmpresa + "', bairroEmpresa = '" + bairroEmpresa
+					+ "', numeroLogradouroEmpresa = '" + numeroLogradouroEmpresa + "', complementoEmpresa = '"
+					+ complementoEmpresa + "', cidadeEmpresa = '" + cidadeEmpresa + "', estadoEmpresa = '"
+					+ estadoEmpresa + "', usuarioEmpresa = '" + usuarioEmpresa + "', senhaEmpresa = '" + senhaEmpresa
 					+ "' WHERE idEmpresa = '" + idEmpresa + "'");
 
 			if (((ResultSet) tabela).next()) {

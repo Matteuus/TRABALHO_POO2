@@ -60,11 +60,11 @@ public class FormVendaProduto extends JFrame {
 		lbNomeProduto.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lbNomeProduto.setBounds(12, 46, 46, 22);
 		contentPane.add(lbNomeProduto);
-		
-				ctNomeProduto = new JTextField();
-				ctNomeProduto.setBounds(12, 70, 390, 20);
-				contentPane.add(ctNomeProduto);
-				ctNomeProduto.setColumns(10);
+
+		ctNomeProduto = new JTextField();
+		ctNomeProduto.setBounds(12, 70, 390, 20);
+		contentPane.add(ctNomeProduto);
+		ctNomeProduto.setColumns(10);
 
 		JLabel lbCategoria = new JLabel("Categoria: " + categoria);
 		lbCategoria.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -80,17 +80,17 @@ public class FormVendaProduto extends JFrame {
 		ctQtdProduto.setBounds(12, 136, 102, 20);
 		contentPane.add(ctQtdProduto);
 		ctQtdProduto.setColumns(10);
-		
+
 		lbValor = new JLabel("Valor R$");
 		lbValor.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lbValor.setBounds(12, 169, 110, 20);
 		contentPane.add(lbValor);
-		
+
 		ctValorProduto = new JTextField();
 		ctValorProduto.setColumns(10);
 		ctValorProduto.setBounds(12, 202, 102, 20);
 		contentPane.add(ctValorProduto);
-		
+
 		JButton btnVoltar = new JButton("Voltar");
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -101,7 +101,7 @@ public class FormVendaProduto extends JFrame {
 		});
 		btnVoltar.setBounds(12, 425, 97, 25);
 		contentPane.add(btnVoltar);
-		
+
 		JButton btnSalvarProduto = new JButton("Salvar Produto");
 		btnSalvarProduto.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {

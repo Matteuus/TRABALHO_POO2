@@ -1,7 +1,6 @@
 package com.poo2.view;
 
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -10,11 +9,17 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import java.awt.Font;
+import java.awt.Toolkit;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 import javax.swing.JPasswordField;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Dimension;
+import javax.swing.ImageIcon;
+import javax.swing.SwingConstants;
+import java.awt.SystemColor;
+import java.awt.Color;
 
 public class FormCadEmpresa extends JFrame {
 
@@ -55,89 +60,103 @@ public class FormCadEmpresa extends JFrame {
 	 * Create the frame.
 	 */
 	public FormCadEmpresa() {
+		setTitle("Cadastro");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 810, 510);
+		Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
+		int WIDTH = 810;
+		int HEIGHT = 510;
+		int x = (screen.width - WIDTH) / 2;
+		int y = (screen.height - HEIGHT) / 2;
+		setBounds(x, y, WIDTH, HEIGHT);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
+		JLabel lblDados = new JLabel("Dados Cadastrais");
+		lblDados.setHorizontalAlignment(SwingConstants.CENTER);
+		lblDados.setFont(new Font("Maiandra GD", Font.PLAIN, 18));
+		lblDados.setBounds(12, 10, 378, 30);
+		contentPane.add(lblDados);
+
 		JLabel lblNomeEmpresa = new JLabel("Nome");
-		lblNomeEmpresa.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblNomeEmpresa.setBounds(21, 11, 89, 26);
+		lblNomeEmpresa.setFont(new Font("Maiandra GD", Font.PLAIN, 18));
+		lblNomeEmpresa.setBounds(12, 40, 378, 30);
 		contentPane.add(lblNomeEmpresa);
 
 		ctNome = new JTextField();
-		ctNome.setBounds(21, 36, 352, 20);
+		ctNome.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		ctNome.setBounds(12, 70, 378, 30);
 		contentPane.add(ctNome);
 		ctNome.setColumns(10);
 
 		JLabel lblCnpjEmpresa = new JLabel("CNPJ");
-		lblCnpjEmpresa.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblCnpjEmpresa.setBounds(21, 67, 89, 26);
+		lblCnpjEmpresa.setFont(new Font("Maiandra GD", Font.PLAIN, 18));
+		lblCnpjEmpresa.setBounds(12, 100, 378, 30);
 		contentPane.add(lblCnpjEmpresa);
 
 		ctCnpj = new JTextField();
-		ctCnpj.setBounds(21, 92, 352, 20);
+		ctCnpj.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		ctCnpj.setBounds(12, 130, 378, 30);
 		contentPane.add(ctCnpj);
 		ctCnpj.setColumns(10);
 
-		JLabel lblBairroEmpresa = new JLabel("Bairro");
-		lblBairroEmpresa.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblBairroEmpresa.setBounds(21, 123, 46, 14);
-		contentPane.add(lblBairroEmpresa);
-
-		ctBairro = new JTextField();
-		ctBairro.setBounds(21, 145, 173, 20);
-		contentPane.add(ctBairro);
-		ctBairro.setColumns(10);
-
-		JLabel lblLogradouroEmpresa = new JLabel("Logradouro");
-		lblLogradouroEmpresa.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblLogradouroEmpresa.setBounds(206, 120, 115, 20);
-		contentPane.add(lblLogradouroEmpresa);
-
-		ctLogradouro = new JTextField();
-		ctLogradouro.setBounds(206, 145, 167, 20);
-		contentPane.add(ctLogradouro);
-		ctLogradouro.setColumns(10);
-
-		JLabel lblCidadeEmpresa = new JLabel("Cidade");
-		lblCidadeEmpresa.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblCidadeEmpresa.setBounds(21, 178, 149, 14);
-		contentPane.add(lblCidadeEmpresa);
-
-		ctCidade = new JTextField();
-		ctCidade.setBounds(21, 197, 352, 20);
-		contentPane.add(ctCidade);
-		ctCidade.setColumns(10);
-
 		JLabel lblTelEmpresa = new JLabel("Telefone");
-		lblTelEmpresa.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblTelEmpresa.setBounds(385, 17, 100, 14);
+		lblTelEmpresa.setFont(new Font("Maiandra GD", Font.PLAIN, 18));
+		lblTelEmpresa.setBounds(12, 160, 378, 30);
 		contentPane.add(lblTelEmpresa);
 
 		ctTel = new JTextField();
-		ctTel.setBounds(385, 36, 395, 20);
+		ctTel.setBounds(12, 190, 378, 30);
 		contentPane.add(ctTel);
 		ctTel.setColumns(10);
 
+		JLabel lblUsuarioEmpresa = new JLabel("Usuário");
+		lblUsuarioEmpresa.setFont(new Font("Maiandra GD", Font.PLAIN, 18));
+		lblUsuarioEmpresa.setBounds(12, 220, 378, 30);
+		contentPane.add(lblUsuarioEmpresa);
+
+		ctUsuario = new JTextField();
+		ctUsuario.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		ctUsuario.setColumns(10);
+		ctUsuario.setBounds(12, 250, 378, 30);
+		contentPane.add(ctUsuario);
+
+		JLabel lblSenhaEmpresa = new JLabel("Senha");
+		lblSenhaEmpresa.setFont(new Font("Maiandra GD", Font.PLAIN, 18));
+		lblSenhaEmpresa.setBounds(12, 280, 378, 30);
+		contentPane.add(lblSenhaEmpresa);
+
+		ctSenha = new JPasswordField();
+		ctSenha.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		ctSenha.setBounds(12, 310, 378, 30);
+		contentPane.add(ctSenha);
+
+		JLabel lblEndereco = new JLabel("Endereço");
+		lblEndereco.setFont(new Font("Maiandra GD", Font.PLAIN, 18));
+		lblEndereco.setHorizontalAlignment(SwingConstants.CENTER);
+		lblEndereco.setBounds(402, 10, 378, 30);
+		contentPane.add(lblEndereco);
+
 		JLabel lblCepEmpresa = new JLabel("CEP");
-		lblCepEmpresa.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblCepEmpresa.setBounds(385, 73, 46, 14);
+		lblCepEmpresa.setFont(new Font("Maiandra GD", Font.PLAIN, 18));
+		lblCepEmpresa.setBounds(402, 40, 378, 30);
 		contentPane.add(lblCepEmpresa);
 
 		ctCep = new JTextField();
-		ctCep.setBounds(385, 92, 395, 20);
+		ctCep.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		ctCep.setBounds(402, 70, 378, 30);
 		contentPane.add(ctCep);
 		ctCep.setColumns(10);
 
 		JLabel lblUfEmpresa = new JLabel("UF");
-		lblUfEmpresa.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblUfEmpresa.setBounds(385, 178, 46, 14);
+		lblUfEmpresa.setFont(new Font("Maiandra GD", Font.PLAIN, 18));
+		lblUfEmpresa.setBounds(402, 100, 60, 30);
 		contentPane.add(lblUfEmpresa);
 
 		JComboBox<String> ctEstado = new JComboBox<String>();
+		ctEstado.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		ctEstado.setBackground(Color.WHITE);
 		ctEstado.addItem("AC");
 		ctEstado.addItem("AL");
 		ctEstado.addItem("AP");
@@ -165,10 +184,45 @@ public class FormCadEmpresa extends JFrame {
 		ctEstado.addItem("SC");
 		ctEstado.addItem("SE");
 		ctEstado.addItem("TO");
-		ctEstado.setBounds(383, 197, 70, 20);
+		ctEstado.setBounds(402, 130, 60, 30);
 		contentPane.add(ctEstado);
 
-		JButton btnSalvarDados = new JButton("Salvar Dados");
+		JLabel lblCidadeEmpresa = new JLabel("Cidade");
+		lblCidadeEmpresa.setFont(new Font("Maiandra GD", Font.PLAIN, 18));
+		lblCidadeEmpresa.setBounds(474, 100, 306, 30);
+		contentPane.add(lblCidadeEmpresa);
+
+		ctCidade = new JTextField();
+		ctCidade.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		ctCidade.setBounds(474, 130, 306, 30);
+		contentPane.add(ctCidade);
+		ctCidade.setColumns(10);
+
+		JLabel lblBairroEmpresa = new JLabel("Bairro");
+		lblBairroEmpresa.setFont(new Font("Maiandra GD", Font.PLAIN, 18));
+		lblBairroEmpresa.setBounds(402, 160, 378, 30);
+		contentPane.add(lblBairroEmpresa);
+
+		ctBairro = new JTextField();
+		ctBairro.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		ctBairro.setBounds(402, 190, 378, 30);
+		contentPane.add(ctBairro);
+		ctBairro.setColumns(10);
+
+		JLabel lblLogradouroEmpresa = new JLabel("Logradouro");
+		lblLogradouroEmpresa.setFont(new Font("Maiandra GD", Font.PLAIN, 18));
+		lblLogradouroEmpresa.setBounds(402, 220, 378, 30);
+		contentPane.add(lblLogradouroEmpresa);
+
+		ctLogradouro = new JTextField();
+		ctLogradouro.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		ctLogradouro.setBounds(402, 250, 378, 30);
+		contentPane.add(ctLogradouro);
+		ctLogradouro.setColumns(10);
+
+		JButton btnSalvarDados = new JButton("Salvar");
+		btnSalvarDados.setBackground(SystemColor.control);
+		btnSalvarDados.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		btnSalvarDados.addActionListener(new ActionListener() {
 			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent arg0) {
@@ -196,10 +250,33 @@ public class FormCadEmpresa extends JFrame {
 
 			}
 		});
-		btnSalvarDados.setBounds(665, 425, 115, 25);
-		contentPane.add(btnSalvarDados);
+
+		JLabel lblNumeroEmpresa = new JLabel("Número");
+		lblNumeroEmpresa.setFont(new Font("Maiandra GD", Font.PLAIN, 18));
+		lblNumeroEmpresa.setBounds(402, 280, 183, 30);
+		contentPane.add(lblNumeroEmpresa);
+
+		ctNumero = new JTextField();
+		ctNumero.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		ctNumero.setColumns(10);
+		ctNumero.setBounds(402, 310, 183, 30);
+		contentPane.add(ctNumero);
+
+		JLabel lblComplementoEmpresa = new JLabel("Complemento");
+		lblComplementoEmpresa.setFont(new Font("Maiandra GD", Font.PLAIN, 18));
+		lblComplementoEmpresa.setBounds(597, 280, 183, 30);
+		contentPane.add(lblComplementoEmpresa);
+
+		ctComplemento = new JTextField();
+		ctComplemento.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		ctComplemento.setColumns(10);
+		ctComplemento.setBounds(597, 310, 183, 30);
+		contentPane.add(ctComplemento);
 
 		JButton btnVoltar = new JButton("Voltar");
+		btnVoltar.setBackground(SystemColor.control);
+		btnVoltar.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		btnVoltar.setForeground(Color.BLACK);
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 
@@ -209,46 +286,14 @@ public class FormCadEmpresa extends JFrame {
 
 			}
 		});
-		btnVoltar.setBounds(21, 425, 115, 25);
+		btnVoltar.setBounds(12, 425, 116, 30);
 		contentPane.add(btnVoltar);
+		btnSalvarDados.setBounds(665, 425, 116, 30);
+		contentPane.add(btnSalvarDados);
 
-		ctUsuario = new JTextField();
-		ctUsuario.setColumns(10);
-		ctUsuario.setBounds(383, 145, 173, 20);
-		contentPane.add(ctUsuario);
-
-		JLabel lblUsuarioEmpresa = new JLabel("Usuário");
-		lblUsuarioEmpresa.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblUsuarioEmpresa.setBounds(385, 123, 46, 14);
-		contentPane.add(lblUsuarioEmpresa);
-
-		JLabel lblSenhaEmpresa = new JLabel("Senha");
-		lblSenhaEmpresa.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblSenhaEmpresa.setBounds(568, 120, 115, 20);
-		contentPane.add(lblSenhaEmpresa);
-
-		ctSenha = new JPasswordField();
-		ctSenha.setBounds(566, 145, 214, 20);
-		contentPane.add(ctSenha);
-
-		ctNumero = new JTextField();
-		ctNumero.setColumns(10);
-		ctNumero.setBounds(465, 197, 149, 20);
-		contentPane.add(ctNumero);
-
-		JLabel lblNmeroEmpresa = new JLabel("Número");
-		lblNmeroEmpresa.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblNmeroEmpresa.setBounds(465, 178, 76, 14);
-		contentPane.add(lblNmeroEmpresa);
-
-		JLabel lblComplementoEmpresa = new JLabel("Complemento");
-		lblComplementoEmpresa.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblComplementoEmpresa.setBounds(631, 175, 115, 20);
-		contentPane.add(lblComplementoEmpresa);
-
-		ctComplemento = new JTextField();
-		ctComplemento.setColumns(10);
-		ctComplemento.setBounds(631, 197, 149, 20);
-		contentPane.add(ctComplemento);
+		JLabel lblFundo = new JLabel("");
+		lblFundo.setIcon(new ImageIcon(FormCadEmpresa.class.getResource("/com/poo2/img/fundo1.jpeg")));
+		lblFundo.setBounds(0, 0, 792, 463);
+		contentPane.add(lblFundo);
 	}
 }

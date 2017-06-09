@@ -44,7 +44,7 @@ public class CategoriaProduto extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JButton btnVoltar = new JButton("Voltar");
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -55,7 +55,7 @@ public class CategoriaProduto extends JFrame {
 		});
 		btnVoltar.setBounds(12, 425, 97, 25);
 		contentPane.add(btnVoltar);
-		
+
 		JButton btnComprar = new JButton("Categoria A");
 		btnComprar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -67,7 +67,7 @@ public class CategoriaProduto extends JFrame {
 		});
 		btnComprar.setBounds(12, 13, 109, 25);
 		contentPane.add(btnComprar);
-		
+
 		JButton btnCategoriaB = new JButton("Categoria B");
 		btnCategoriaB.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -79,7 +79,7 @@ public class CategoriaProduto extends JFrame {
 		});
 		btnCategoriaB.setBounds(133, 13, 109, 25);
 		contentPane.add(btnCategoriaB);
-		
+
 		JButton btnCategoriaC = new JButton("Categoria C");
 		btnCategoriaC.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -91,7 +91,7 @@ public class CategoriaProduto extends JFrame {
 		});
 		btnCategoriaC.setBounds(254, 13, 109, 25);
 		contentPane.add(btnCategoriaC);
-		
+
 		JButton btnCategoriaD = new JButton("Categoria D");
 		btnCategoriaD.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -103,7 +103,7 @@ public class CategoriaProduto extends JFrame {
 		});
 		btnCategoriaD.setBounds(375, 13, 109, 25);
 		contentPane.add(btnCategoriaD);
-		
+
 		JButton btnCategoriaE = new JButton("Categoria E");
 		btnCategoriaE.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -115,7 +115,7 @@ public class CategoriaProduto extends JFrame {
 		});
 		btnCategoriaE.setBounds(496, 13, 109, 25);
 		contentPane.add(btnCategoriaE);
-		
+
 		JButton btnCategoriaF = new JButton("Categoria F");
 		btnCategoriaF.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {

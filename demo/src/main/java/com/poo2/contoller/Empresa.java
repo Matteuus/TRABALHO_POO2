@@ -75,7 +75,6 @@ public class Empresa {
 			String logradouroEmpresa, String bairroEmpresa, int numeroLogradouroEmpresa, String complementoEmpresa,
 			String cidadeEmpresa, String estadoEmpresa, String usuarioEmpresa, String senhaEmpresa, long id) {
 
-
 		int resultado = 0;
 
 		Empresas empresa = new Empresas();
@@ -93,7 +92,6 @@ public class Empresa {
 		empresa.setUsuarioEmpresa(usuarioEmpresa);
 		empresa.setSenhaEmpresa(senhaEmpresa);
 		empresa.setIdEmpresa(id);
-		
 
 		DAO<Empresas> dao = new EmpresasDAO();
 

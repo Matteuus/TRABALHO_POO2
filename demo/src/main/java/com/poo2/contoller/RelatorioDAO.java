@@ -14,7 +14,7 @@ public class RelatorioDAO extends GenericDAO<Relatorio> {
 	public static boolean buscarproduto;
 
 	public Produtos Buscarproduto(long idEmpresa) {
-		
+
 		Produtos user = new Produtos();
 
 		Connection conn = null;
@@ -47,7 +47,7 @@ public class RelatorioDAO extends GenericDAO<Relatorio> {
 		return user;
 
 	}
-	
+
 	public RelatorioDAO() {
 		super(Relatorio.class);
 	}

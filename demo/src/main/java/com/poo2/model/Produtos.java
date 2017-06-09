@@ -75,6 +75,4 @@ public class Produtos {
 		this.estoqueProduto = estoqueProduto;
 	}
 
-	
-	
 }

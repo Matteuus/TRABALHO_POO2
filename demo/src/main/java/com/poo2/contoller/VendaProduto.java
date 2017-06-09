@@ -8,7 +8,7 @@ public class VendaProduto {
 
 	public int addDados(long idEmpresa, String nomeProduto, String categoriaProduto, float valorProduto,
 			int estoqueProduto) {
-		
+
 		int resultado = 0;
 		Produtos p = new Produtos();
 
