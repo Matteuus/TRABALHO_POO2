@@ -61,7 +61,7 @@ public class FormCadEmpresa extends JFrame {
 	 */
 	public FormCadEmpresa() {
 		setTitle("Cadastro");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
 		int WIDTH = 810;
 		int HEIGHT = 510;
@@ -286,9 +286,9 @@ public class FormCadEmpresa extends JFrame {
 
 			}
 		});
-		btnVoltar.setBounds(12, 425, 116, 30);
+		btnVoltar.setBounds(12, 421, 116, 30);
 		contentPane.add(btnVoltar);
-		btnSalvarDados.setBounds(665, 425, 116, 30);
+		btnSalvarDados.setBounds(665, 421, 116, 30);
 		contentPane.add(btnSalvarDados);
 
 		JLabel lblFundo = new JLabel("");

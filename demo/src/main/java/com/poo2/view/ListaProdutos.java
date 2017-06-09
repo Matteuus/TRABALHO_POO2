@@ -1,5 +1,6 @@
 package com.poo2.view;
 
+import java.awt.Dimension;
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -10,9 +11,14 @@ import com.poo2.tableModel.ProdutoTableModel;
 import javax.swing.JTable;
 import javax.swing.WindowConstants;
 import java.awt.Font;
+import java.awt.Toolkit;
+
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JLabel;
+import javax.swing.ImageIcon;
+import java.awt.SystemColor;
 
 public class ListaProdutos extends JFrame {
 
@@ -23,6 +29,7 @@ public class ListaProdutos extends JFrame {
 	protected static final long Long = 0;
 	private JPanel contentPane;
 	private JTable table;
+	private JLabel lblFundo;
 
 	private void PreencherTabela() {
 		ProdutosDAO pd = new ProdutosDAO();
@@ -52,15 +59,20 @@ public class ListaProdutos extends JFrame {
 	 */
 	public ListaProdutos(long id) {
 		setTitle("Lista de Produtos");
-		setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 810, 510);
+		setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+		Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
+		int WIDTH = 810;
+		int HEIGHT = 510;
+		int x = (screen.width - WIDTH) / 2;
+		int y = (screen.height - HEIGHT) / 2;
+		setBounds(x, y, WIDTH, HEIGHT);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
 		table = new JTable();
-		table.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		table.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		table.setBounds(10, 50, 414, 143);
 		contentPane.add(table);
 
@@ -69,6 +81,8 @@ public class ListaProdutos extends JFrame {
 		contentPane.add(scrollPane);
 
 		JButton btnVoltar = new JButton("Voltar");
+		btnVoltar.setBackground(SystemColor.control);
+		btnVoltar.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				TelaPrincipal tp = new TelaPrincipal(id);
@@ -76,8 +90,13 @@ public class ListaProdutos extends JFrame {
 				dispose();
 			}
 		});
-		btnVoltar.setBounds(10, 437, 89, 23);
+		btnVoltar.setBounds(12, 421, 116, 30);
 		contentPane.add(btnVoltar);
+
+		lblFundo = new JLabel("New label");
+		lblFundo.setIcon(new ImageIcon(ListaProdutos.class.getResource("/com/poo2/img/fundo1.jpeg")));
+		lblFundo.setBounds(0, 0, 792, 463);
+		contentPane.add(lblFundo);
 		PreencherTabela();
 	}
 }

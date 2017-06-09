@@ -1,5 +1,6 @@
 package com.poo2.view;
 
+import java.awt.Dimension;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -10,10 +11,16 @@ import com.poo2.contoller.VendaProduto;
 
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.Toolkit;
+
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.SystemColor;
+import java.awt.Color;
+import javax.swing.SwingConstants;
+import javax.swing.ImageIcon;
 
 public class FormVendaProduto extends JFrame {
 
@@ -28,6 +35,9 @@ public class FormVendaProduto extends JFrame {
 	private JTextField ctQtdProduto;
 	private JLabel lbValor;
 	private JTextField ctValorProduto;
+	private JTextField ctCategoria;
+	private JLabel lblProdutoVenda;
+	private JLabel lblFundo;
 
 	/**
 	 * Launch the application.
@@ -49,49 +59,73 @@ public class FormVendaProduto extends JFrame {
 	 * Create the frame.
 	 */
 	public FormVendaProduto(String categoria, long id) {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 810, 510);
+		setTitle("Venda");
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
+		int WIDTH = 810;
+		int HEIGHT = 510;
+		int x = (screen.width - WIDTH) / 2;
+		int y = (screen.height - HEIGHT) / 2;
+		setBounds(x, y, WIDTH, HEIGHT);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		
+		lblProdutoVenda = new JLabel("Produto a Venda");
+		lblProdutoVenda.setHorizontalAlignment(SwingConstants.CENTER);
+		lblProdutoVenda.setFont(new Font("Maiandra GD", Font.PLAIN, 18));
+		lblProdutoVenda.setBounds(12, 10, 768, 30);
+		contentPane.add(lblProdutoVenda);
+
+		JLabel lbCategoria = new JLabel("Categoria");
+		lbCategoria.setFont(new Font("Maiandra GD", Font.PLAIN, 18));
+		lbCategoria.setBounds(12, 40, 378, 30);
+		contentPane.add(lbCategoria);
+		
+		ctCategoria = new JTextField(categoria);
+		ctCategoria.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		ctCategoria.setBackground(new Color(255, 250, 205));
+		ctCategoria.setEditable(false);
+		ctCategoria.setBounds(12, 70, 378, 30);
+		contentPane.add(ctCategoria);
+		ctCategoria.setColumns(10);
 
 		JLabel lbNomeProduto = new JLabel("Nome");
-		lbNomeProduto.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lbNomeProduto.setBounds(12, 46, 46, 22);
+		lbNomeProduto.setFont(new Font("Maiandra GD", Font.PLAIN, 18));
+		lbNomeProduto.setBounds(12, 100, 378, 30);
 		contentPane.add(lbNomeProduto);
 
 		ctNomeProduto = new JTextField();
-		ctNomeProduto.setBounds(12, 70, 390, 20);
+		ctNomeProduto.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		ctNomeProduto.setBounds(12, 130, 378, 30);
 		contentPane.add(ctNomeProduto);
 		ctNomeProduto.setColumns(10);
 
-		JLabel lbCategoria = new JLabel("Categoria: " + categoria);
-		lbCategoria.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lbCategoria.setBounds(12, 13, 390, 20);
-		contentPane.add(lbCategoria);
-
 		JLabel lbQtd = new JLabel("Quantidade");
-		lbQtd.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lbQtd.setBounds(12, 103, 110, 20);
+		lbQtd.setFont(new Font("Maiandra GD", Font.PLAIN, 18));
+		lbQtd.setBounds(12, 160, 378, 30);
 		contentPane.add(lbQtd);
 
 		ctQtdProduto = new JTextField();
-		ctQtdProduto.setBounds(12, 136, 102, 20);
+		ctQtdProduto.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		ctQtdProduto.setBounds(12, 190, 378, 30);
 		contentPane.add(ctQtdProduto);
 		ctQtdProduto.setColumns(10);
 
 		lbValor = new JLabel("Valor R$");
-		lbValor.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lbValor.setBounds(12, 169, 110, 20);
+		lbValor.setFont(new Font("Maiandra GD", Font.PLAIN, 18));
+		lbValor.setBounds(12, 220, 378, 30);
 		contentPane.add(lbValor);
 
 		ctValorProduto = new JTextField();
 		ctValorProduto.setColumns(10);
-		ctValorProduto.setBounds(12, 202, 102, 20);
+		ctValorProduto.setBounds(12, 250, 378, 30);
 		contentPane.add(ctValorProduto);
 
 		JButton btnVoltar = new JButton("Voltar");
+		btnVoltar.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		btnVoltar.setBackground(SystemColor.control);
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				CategoriaProduto fcp = new CategoriaProduto(id);
@@ -99,10 +133,12 @@ public class FormVendaProduto extends JFrame {
 				dispose();
 			}
 		});
-		btnVoltar.setBounds(12, 425, 97, 25);
+		btnVoltar.setBounds(12, 421, 116, 30);
 		contentPane.add(btnVoltar);
 
-		JButton btnSalvarProduto = new JButton("Salvar Produto");
+		JButton btnSalvarProduto = new JButton("Salvar");
+		btnSalvarProduto.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		btnSalvarProduto.setBackground(SystemColor.control);
 		btnSalvarProduto.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				VendaProduto vd = new VendaProduto();
@@ -118,7 +154,12 @@ public class FormVendaProduto extends JFrame {
 				}
 			}
 		});
-		btnSalvarProduto.setBounds(660, 425, 120, 25);
+		btnSalvarProduto.setBounds(660, 421, 116, 30);
 		contentPane.add(btnSalvarProduto);
+		
+		lblFundo = new JLabel("");
+		lblFundo.setIcon(new ImageIcon(FormVendaProduto.class.getResource("/com/poo2/img/fundo1.jpeg")));
+		lblFundo.setBounds(0, 0, 792, 463);
+		contentPane.add(lblFundo);
 	}
 }

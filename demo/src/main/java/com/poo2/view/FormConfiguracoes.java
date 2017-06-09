@@ -66,7 +66,7 @@ public class FormConfiguracoes extends JFrame {
 	 */
 	public FormConfiguracoes(long id) {
 		setTitle("Configurações");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
 		int WIDTH = 810;
 		int HEIGHT = 510;
@@ -131,7 +131,7 @@ public class FormConfiguracoes extends JFrame {
 
 		ctUsuario = new JTextField(e.getNomeEmpresa());
 		ctUsuario.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		ctUsuario.setBackground(Color.WHITE);
+		ctUsuario.setBackground(new Color(255, 250, 205));
 		ctUsuario.setEditable(false);
 		ctUsuario.setBounds(12, 250, 378, 30);
 		contentPane.add(ctUsuario);
@@ -271,10 +271,10 @@ public class FormConfiguracoes extends JFrame {
 
 			}
 		});
-		btnVoltar.setBounds(12, 425, 116, 30);
+		btnVoltar.setBounds(12, 421, 116, 30);
 		contentPane.add(btnVoltar);
 
-		JButton btnExcluirConta = new JButton("Excluir Empresa");
+		JButton btnExcluirConta = new JButton("Excluir");
 		btnExcluirConta.setBackground(SystemColor.control);
 		btnExcluirConta.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		btnExcluirConta.addActionListener(new ActionListener() {
@@ -298,7 +298,7 @@ public class FormConfiguracoes extends JFrame {
 			}
 
 		});
-		btnExcluirConta.setBounds(311, 425, 170, 30);
+		btnExcluirConta.setBounds(338, 421, 116, 30);
 		contentPane.add(btnExcluirConta);
 
 		JButton btnSalvarDados = new JButton("Alterar");
@@ -345,7 +345,7 @@ public class FormConfiguracoes extends JFrame {
 				dispose();
 			}
 		});
-		btnSalvarDados.setBounds(664, 425, 116, 30);
+		btnSalvarDados.setBounds(664, 421, 116, 30);
 		contentPane.add(btnSalvarDados);
 
 		JLabel lblFundo = new JLabel("New label");

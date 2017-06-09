@@ -5,9 +5,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
 import com.poo2.contoller.Empresa;
-
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
@@ -67,19 +65,19 @@ public class TelaLogin extends JFrame {
 		JLabel lblLogin = new JLabel("Login");
 		lblLogin.setForeground(Color.BLACK);
 		lblLogin.setFont(new Font("Maiandra GD", Font.PLAIN, 18));
-		lblLogin.setBounds(12, 13, 64, 30);
+		lblLogin.setBounds(406, 10, 64, 30);
 		contentPane.add(lblLogin);
 
 		ctLogin = new JTextField();
 		ctLogin.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		ctLogin.setBounds(83, 13, 160, 30);
+		ctLogin.setBounds(406, 40, 130, 30);
 		contentPane.add(ctLogin);
 		ctLogin.setColumns(10);
 
 		JLabel lblSenha = new JLabel("Senha");
 		lblSenha.setForeground(Color.BLACK);
 		lblSenha.setFont(new Font("Maiandra GD", Font.PLAIN, 18));
-		lblSenha.setBounds(12, 56, 67, 30);
+		lblSenha.setBounds(548, 10, 67, 30);
 		contentPane.add(lblSenha);
 
 		JButton btnEntrar = new JButton("Entrar");
@@ -100,13 +98,14 @@ public class TelaLogin extends JFrame {
 
 		ctSenha = new JPasswordField();
 		ctSenha.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		ctSenha.setBounds(83, 56, 160, 30);
+		ctSenha.setBounds(548, 40, 130, 30);
 		contentPane.add(ctSenha);
-		btnEntrar.setBounds(255, 56, 116, 30);
+		btnEntrar.setBounds(690, 40, 90, 30);
 		contentPane.add(btnEntrar);
 
-		JButton btnCadastrar = new JButton("Cadastrar");
-		btnCadastrar.setBackground(SystemColor.control);
+		JButton btnCadastrar = new JButton("Cadastrar Empresa");
+		btnCadastrar.setForeground(Color.WHITE);
+		btnCadastrar.setBackground(new Color(0, 100, 0));
 		btnCadastrar.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -117,7 +116,7 @@ public class TelaLogin extends JFrame {
 
 			}
 		});
-		btnCadastrar.setBounds(664, 420, 116, 30);
+		btnCadastrar.setBounds(596, 400, 184, 30);
 		contentPane.add(btnCadastrar);
 
 		JLabel lblFundo = new JLabel("");

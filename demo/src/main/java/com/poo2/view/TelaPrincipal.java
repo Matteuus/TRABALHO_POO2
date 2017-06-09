@@ -48,7 +48,7 @@ public class TelaPrincipal extends JFrame {
 	 */
 	public TelaPrincipal(long id) {
 		setTitle("Gerenciamento");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
 		int WIDTH = 810;
 		int HEIGHT = 510;
@@ -131,10 +131,11 @@ public class TelaPrincipal extends JFrame {
 				dispose();
 			}
 		});
-		btnSair.setBounds(630, 420, 150, 30);
+		btnSair.setBounds(664, 421, 116, 30);
 		contentPane.add(btnSair);
 
-		JButton btnConfiguracoes = new JButton("Configurações");
+		JButton btnConfiguracoes = new JButton("");
+		btnConfiguracoes.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/com/poo2/icones/settings.png")));
 		btnConfiguracoes.setBackground(SystemColor.control);
 		btnConfiguracoes.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		btnConfiguracoes.addActionListener(new ActionListener() {
@@ -144,7 +145,7 @@ public class TelaPrincipal extends JFrame {
 				dispose();
 			}
 		});
-		btnConfiguracoes.setBounds(630, 39, 150, 30);
+		btnConfiguracoes.setBounds(735, 39, 45, 45);
 		contentPane.add(btnConfiguracoes);
 
 		JLabel lblFundo = new JLabel("");

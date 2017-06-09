@@ -13,6 +13,7 @@ import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.SystemColor;
 
 public class ListaCompras extends JFrame {
 
@@ -69,6 +70,8 @@ public class ListaCompras extends JFrame {
 		contentPane.add(scrollPane);
 
 		JButton btnVoltar = new JButton("Voltar");
+		btnVoltar.setBackground(SystemColor.control);
+		btnVoltar.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				TelaPrincipal tp = new TelaPrincipal(id);
@@ -76,7 +79,7 @@ public class ListaCompras extends JFrame {
 				dispose();
 			}
 		});
-		btnVoltar.setBounds(10, 437, 89, 23);
+		btnVoltar.setBounds(12, 421, 116, 30);
 		contentPane.add(btnVoltar);
 		PreencherTabela();
 	}

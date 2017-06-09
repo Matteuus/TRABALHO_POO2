@@ -7,6 +7,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JTable;
 import javax.swing.JButton;
+import java.awt.Font;
+import java.awt.SystemColor;
 
 public class ListaVendas extends JFrame {
 
@@ -49,7 +51,9 @@ public class ListaVendas extends JFrame {
 		contentPane.add(table);
 
 		JButton button = new JButton("Voltar");
-		button.setBounds(12, 425, 97, 25);
+		button.setBackground(SystemColor.control);
+		button.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		button.setBounds(12, 421, 116, 30);
 		contentPane.add(button);
 	}
 
