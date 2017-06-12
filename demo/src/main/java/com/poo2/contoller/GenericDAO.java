@@ -105,4 +105,20 @@ public abstract class GenericDAO<T> implements DAO<T> {
 		return lista;
 	}
 
+	@SuppressWarnings("unchecked")
+	public List<T> listarE(String campo, Object value) {
+		List<T> lista = null;
+		Session sessao = null;
+		try {
+			sessao = getSession().openSession();
+			lista = sessao.createCriteria(classe).add(Restrictions.ne(campo, value)).list();
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, e.getMessage());
+			return null;
+		} finally {
+			sessao.close();
+		}
+		return lista;
+	}
+	
 }

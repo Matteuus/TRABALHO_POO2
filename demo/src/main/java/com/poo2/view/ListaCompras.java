@@ -31,9 +31,9 @@ public class ListaCompras extends JFrame {
 	private JTable table;
 	private JLabel lblFundo;
 
-	private void PreencherTabela() {
+	private void PreencherTabela(long id) {
 		ProdutosDAO pd = new ProdutosDAO();
-		CompraTableModel ptm = new CompraTableModel(pd.lista());
+		CompraTableModel ptm = new CompraTableModel(pd.listarE("idEmpresa", id));
 		table.setModel(ptm);
 	}
 
@@ -97,6 +97,6 @@ public class ListaCompras extends JFrame {
 		lblFundo.setIcon(new ImageIcon(ListaCompras.class.getResource("/com/poo2/img/fundo1.jpeg")));
 		lblFundo.setBounds(0, 0, 792, 463);
 		contentPane.add(lblFundo);
-		PreencherTabela();
+		PreencherTabela(id);
 	}
 }
