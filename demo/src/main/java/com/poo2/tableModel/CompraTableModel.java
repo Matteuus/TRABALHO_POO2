@@ -20,15 +20,15 @@ public class CompraTableModel extends AbstractTableModel {
 	 */
 	private static final long serialVersionUID = 1L;
 	private String nomeColunas[] = { "ID", "Produto", "Empresa", "Quantidade", "Valor(Unitário)" };
-	private List<Produtos> compras;
+	private List<Produtos> produtos;
 
-	public CompraTableModel(List<Produtos> compras) {
-		this.compras = compras;
+	public CompraTableModel(List<Produtos> produtos) {
+		this.produtos = produtos;
 	}
 
 	@Override
 	public int getRowCount() {
-		return compras.size();
+		return produtos.size();
 	}
 
 	@Override
@@ -38,22 +38,23 @@ public class CompraTableModel extends AbstractTableModel {
 
 	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
-		
-		Produtos compra = compras.get(rowIndex);
+
+		Produtos produto = produtos.get(rowIndex);
 
 		switch (columnIndex) {
 
 		case 0:
-			return compra.getIdProduto();
+			return produto.getIdProduto();
 		case 1:
-			return compra.getNomeProduto();
+			return produto.getNomeProduto();
 		case 2:
-			EmpresasDAO pd = new EmpresasDAO();
-			return pd.Buscarempresa(compra.getIdEmpresa());
+			EmpresasDAO ed = new EmpresasDAO();
+			String nome = ed.Buscarempresa(produto.getIdEmpresa());
+			return nome;
 		case 3:
-			return compra.getEstoqueProduto();
+			return produto.getEstoqueProduto();
 		case 4:
-			return compra.getValorProduto();
+			return produto.getValorProduto();
 		}
 		return null;
 	}

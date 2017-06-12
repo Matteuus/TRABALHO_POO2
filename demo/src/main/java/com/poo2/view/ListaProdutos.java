@@ -98,6 +98,9 @@ public class ListaProdutos extends JFrame {
 		lblFundo.setIcon(new ImageIcon(ListaProdutos.class.getResource("/com/poo2/img/fundo1.jpeg")));
 		lblFundo.setBounds(0, 0, 792, 463);
 		contentPane.add(lblFundo);
+		ProdutosDAO pd = new ProdutosDAO();
+		ProdutoTableModel ptm = new ProdutoTableModel(pd.listar("idEmpresa", id));
+		table.setModel(ptm);
 		PreencherTabela(id);
 	}
 }

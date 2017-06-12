@@ -1,5 +1,6 @@
 package com.poo2.view;
 
+import java.awt.Dimension;
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -14,6 +15,8 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.SystemColor;
+import java.awt.Toolkit;
+
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 
@@ -57,7 +60,12 @@ public class ListaCompras extends JFrame {
 	public ListaCompras(long id) {
 		setTitle("Lista de Compras");
 		setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
-		setBounds(100, 100, 810, 510);
+		Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
+		int WIDTH = 810;
+		int HEIGHT = 510;
+		int x = (screen.width - WIDTH) / 2;
+		int y = (screen.height - HEIGHT) / 2;
+		setBounds(x, y, WIDTH, HEIGHT);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -84,7 +92,7 @@ public class ListaCompras extends JFrame {
 		});
 		btnVoltar.setBounds(12, 421, 116, 30);
 		contentPane.add(btnVoltar);
-		
+
 		lblFundo = new JLabel("");
 		lblFundo.setIcon(new ImageIcon(ListaCompras.class.getResource("/com/poo2/img/fundo1.jpeg")));
 		lblFundo.setBounds(0, 0, 792, 463);
