@@ -7,17 +7,18 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 import com.poo2.contoller.ProdutosDAO;
+import com.poo2.model.Produtos;
 import com.poo2.tableModel.ProdutoTableModel;
-
 import javax.swing.JTable;
+import javax.swing.UIManager;
 import javax.swing.WindowConstants;
 import java.awt.Font;
 import java.awt.Toolkit;
-
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
 import java.awt.SystemColor;
 
@@ -93,6 +94,39 @@ public class ListaProdutos extends JFrame {
 		});
 		btnVoltar.setBounds(12, 421, 116, 30);
 		contentPane.add(btnVoltar);
+
+		JButton btnExcluir = new JButton("Excluir");
+		btnExcluir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+
+				int linha = table.getSelectedRow();
+
+				if (linha < 0) {
+					JOptionPane.showMessageDialog(null, "Selecione um Produto!", "Erro!", JOptionPane.ERROR_MESSAGE);
+				} else {
+
+					Object o = table.getValueAt(linha, 0);
+					ProdutosDAO pd = new ProdutosDAO();
+					Produtos p = pd.listar("idProduto", (long) o).get(0);
+
+					UIManager.put("OptionPane.noButtonText", "Não");
+					UIManager.put("OptionPane.yesButtonText", "Sim");
+					if (JOptionPane.showConfirmDialog(rootPane, "Deseja Excluir?", "Excluir",
+							JOptionPane.YES_NO_OPTION) == JOptionPane.YES_NO_OPTION)
+
+					{
+						JOptionPane.showMessageDialog(rootPane, "Produto excluído com sucesso!");
+						pd.remover(p);
+						PreencherTabela(id);
+					}
+				}
+
+			}
+		});
+		btnExcluir.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		btnExcluir.setBackground(SystemColor.control);
+		btnExcluir.setBounds(664, 421, 116, 30);
+		contentPane.add(btnExcluir);
 
 		lblFundo = new JLabel("");
 		lblFundo.setIcon(new ImageIcon(ListaProdutos.class.getResource("/com/poo2/img/fundo1.jpeg")));
