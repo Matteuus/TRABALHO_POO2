@@ -120,5 +120,5 @@ public abstract class GenericDAO<T> implements DAO<T> {
 		}
 		return lista;
 	}
-	
+
 }

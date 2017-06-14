@@ -7,6 +7,9 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 import com.poo2.contoller.ProdutosDAO;
+import com.poo2.contoller.RelatorioDAO;
+import com.poo2.model.Produtos;
+import com.poo2.model.Relatorio;
 import com.poo2.tableModel.CompraTableModel;
 import javax.swing.JTable;
 import javax.swing.WindowConstants;
@@ -18,7 +21,10 @@ import java.awt.SystemColor;
 import java.awt.Toolkit;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class ListaCompras extends JFrame {
 
@@ -72,6 +78,56 @@ public class ListaCompras extends JFrame {
 		contentPane.setLayout(null);
 
 		table = new JTable();
+		table.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseReleased(MouseEvent arg0) {
+
+				String msg = JOptionPane.showInputDialog("Selecione a quantidade:");
+				if (msg.equals(null) || msg.equals("")) {
+					JOptionPane.showMessageDialog(null, "Digite uma quantidade!");
+				} else {
+
+					int qtdselecionada = Integer.valueOf(msg).intValue();
+
+					int linha = table.getSelectedRow();
+
+					Object o = table.getValueAt(linha, 0);
+					ProdutosDAO pd = new ProdutosDAO();
+					RelatorioDAO rd = new RelatorioDAO();
+					Produtos p = pd.listar("idProduto", (long) o).get(0);
+					Relatorio p2 = new Relatorio();
+
+					int qtdp = p.getEstoqueProduto();
+					int qtdrestante = qtdp - qtdselecionada;
+
+					if (qtdrestante < 0) {
+						JOptionPane.showMessageDialog(null, "Quantidade indisponível");
+					} else {
+						
+						float total = qtdselecionada * p.getValorProduto();
+						
+						p2.setIdProduto(p.getIdProduto());
+						p2.setIdEmpresaCompra(id);
+						p2.setIdEmpresaVenda(p.getIdEmpresa());
+						p2.setQtdProduto(qtdselecionada);
+						p2.setValorTotal(total);
+						
+						p.setEstoqueProduto(qtdrestante);
+
+
+						pd.alterar(p);
+						rd.salvar(p2);
+						qtdrestante = 0;
+						
+						JOptionPane.showMessageDialog(null, "Compra efetuada com sucesso!");
+						
+						PreencherTabela(id);
+
+					}
+
+				}
+			}
+		});
 		table.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		table.setBounds(10, 50, 414, 143);
 		contentPane.add(table);

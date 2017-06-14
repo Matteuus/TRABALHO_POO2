@@ -71,7 +71,7 @@ public class FormVendaProduto extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		lblProdutoVenda = new JLabel("Produto a Venda");
 		lblProdutoVenda.setHorizontalAlignment(SwingConstants.CENTER);
 		lblProdutoVenda.setFont(new Font("Maiandra GD", Font.PLAIN, 18));
@@ -82,7 +82,7 @@ public class FormVendaProduto extends JFrame {
 		lbCategoria.setFont(new Font("Maiandra GD", Font.PLAIN, 18));
 		lbCategoria.setBounds(12, 40, 378, 30);
 		contentPane.add(lbCategoria);
-		
+
 		ctCategoria = new JTextField(categoria);
 		ctCategoria.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		ctCategoria.setBackground(new Color(255, 250, 205));
@@ -156,7 +156,7 @@ public class FormVendaProduto extends JFrame {
 		});
 		btnSalvarProduto.setBounds(660, 421, 116, 30);
 		contentPane.add(btnSalvarProduto);
-		
+
 		lblFundo = new JLabel("");
 		lblFundo.setIcon(new ImageIcon(FormVendaProduto.class.getResource("/com/poo2/img/fundo1.jpeg")));
 		lblFundo.setBounds(0, 0, 792, 463);
