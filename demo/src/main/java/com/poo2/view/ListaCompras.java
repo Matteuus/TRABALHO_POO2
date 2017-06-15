@@ -25,6 +25,8 @@ import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.JTextField;
+import java.awt.Color;
 
 public class ListaCompras extends JFrame {
 
@@ -36,6 +38,7 @@ public class ListaCompras extends JFrame {
 	private JPanel contentPane;
 	private JTable table;
 	private JLabel lblFundo;
+	private JTextField ctPesquisar;
 
 	private void PreencherTabela(long id) {
 		ProdutosDAO pd = new ProdutosDAO();
@@ -75,9 +78,9 @@ public class ListaCompras extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(null);
 
 		table = new JTable();
+		table.setBounds(1, 30, 768, 64);
 		table.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent arg0) {
@@ -128,8 +131,8 @@ public class ListaCompras extends JFrame {
 				}
 			}
 		});
+		contentPane.setLayout(null);
 		table.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		table.setBounds(10, 50, 414, 143);
 		contentPane.add(table);
 
 		JScrollPane scrollPane = new JScrollPane(table);
@@ -137,6 +140,7 @@ public class ListaCompras extends JFrame {
 		contentPane.add(scrollPane);
 
 		JButton btnVoltar = new JButton("Voltar");
+		btnVoltar.setBounds(12, 421, 116, 30);
 		btnVoltar.setBackground(SystemColor.control);
 		btnVoltar.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		btnVoltar.addActionListener(new ActionListener() {
@@ -146,12 +150,41 @@ public class ListaCompras extends JFrame {
 				dispose();
 			}
 		});
-		btnVoltar.setBounds(12, 421, 116, 30);
 		contentPane.add(btnVoltar);
+		
+		JButton btnRefresh = new JButton("");
+		btnRefresh.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnRefresh.setIcon(new ImageIcon(ListaCompras.class.getResource("/com/poo2/icones/refresh.png")));
+		btnRefresh.setBackground(new Color(172, 222, 219));
+		btnRefresh.setBounds(381, 421, 30, 30);
+		contentPane.add(btnRefresh);
+		
+		JLabel lblBusca = new JLabel("Busca: ");
+		lblBusca.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblBusca.setBounds(561, 421, 60, 30);
+		contentPane.add(lblBusca);
+		
+		ctPesquisar = new JTextField();
+		ctPesquisar.setBounds(622, 421, 116, 30);
+		contentPane.add(ctPesquisar);
+		ctPesquisar.setColumns(10);
+		
+		JButton btnPesquisar = new JButton("");
+		btnPesquisar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnPesquisar.setIcon(new ImageIcon(ListaCompras.class.getResource("/com/poo2/icones/search.png")));
+		btnPesquisar.setBackground(new Color(172, 222, 219));
+		btnPesquisar.setBounds(750, 421, 30, 30);
+		contentPane.add(btnPesquisar);
 
 		lblFundo = new JLabel("");
-		lblFundo.setIcon(new ImageIcon(ListaCompras.class.getResource("/com/poo2/img/fundo1.jpeg")));
 		lblFundo.setBounds(0, 0, 792, 463);
+		lblFundo.setIcon(new ImageIcon(ListaCompras.class.getResource("/com/poo2/img/fundo1.jpeg")));
 		contentPane.add(lblFundo);
 		PreencherTabela(id);
 	}

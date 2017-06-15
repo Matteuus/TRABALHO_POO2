@@ -129,7 +129,7 @@ public class FormConfiguracoes extends JFrame {
 		lblUsuarioEmpresa.setBounds(12, 220, 378, 30);
 		contentPane.add(lblUsuarioEmpresa);
 
-		ctUsuario = new JTextField(e.getNomeEmpresa());
+		ctUsuario = new JTextField(e.getUsuarioEmpresa());
 		ctUsuario.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		ctUsuario.setBackground(new Color(255, 250, 205));
 		ctUsuario.setEditable(false);

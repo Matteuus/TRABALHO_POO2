@@ -135,7 +135,7 @@ public class TelaPrincipal extends JFrame {
 		contentPane.add(btnSair);
 
 		JButton btnConfiguracoes = new JButton("");
-		btnConfiguracoes.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/com/poo2/icones/settings.png")));
+		btnConfiguracoes.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/com/poo2/icones/setting.png")));
 		btnConfiguracoes.setBackground(SystemColor.control);
 		btnConfiguracoes.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		btnConfiguracoes.addActionListener(new ActionListener() {
@@ -145,7 +145,7 @@ public class TelaPrincipal extends JFrame {
 				dispose();
 			}
 		});
-		btnConfiguracoes.setBounds(735, 39, 45, 45);
+		btnConfiguracoes.setBounds(750, 39, 30, 30);
 		contentPane.add(btnConfiguracoes);
 
 		JLabel lblFundo = new JLabel("");
