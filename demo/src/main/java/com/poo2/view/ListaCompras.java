@@ -11,6 +11,8 @@ import com.poo2.contoller.RelatorioDAO;
 import com.poo2.model.Produtos;
 import com.poo2.model.Relatorio;
 import com.poo2.tableModel.CompraTableModel;
+import com.poo2.tableModel.ProdutoTableModel;
+
 import javax.swing.JTable;
 import javax.swing.WindowConstants;
 import java.awt.Font;
@@ -27,6 +29,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JTextField;
 import java.awt.Color;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class ListaCompras extends JFrame {
 
@@ -155,6 +159,7 @@ public class ListaCompras extends JFrame {
 		JButton btnRefresh = new JButton("");
 		btnRefresh.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				PreencherTabela(id);
 			}
 		});
 		btnRefresh.setIcon(new ImageIcon(ListaCompras.class.getResource("/com/poo2/icones/refresh.png")));
@@ -164,23 +169,23 @@ public class ListaCompras extends JFrame {
 		
 		JLabel lblBusca = new JLabel("Busca: ");
 		lblBusca.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblBusca.setBounds(561, 421, 60, 30);
+		lblBusca.setBounds(594, 421, 60, 30);
 		contentPane.add(lblBusca);
 		
 		ctPesquisar = new JTextField();
-		ctPesquisar.setBounds(622, 421, 116, 30);
-		contentPane.add(ctPesquisar);
-		ctPesquisar.setColumns(10);
-		
-		JButton btnPesquisar = new JButton("");
-		btnPesquisar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+		ctPesquisar.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+
+		            ProdutosDAO pd = new ProdutosDAO();
+		            ProdutoTableModel ptm = new ProdutoTableModel(pd.listar("nomeProduto", ctPesquisar.getText()));
+		            table.setModel(ptm);
+		        
 			}
 		});
-		btnPesquisar.setIcon(new ImageIcon(ListaCompras.class.getResource("/com/poo2/icones/search.png")));
-		btnPesquisar.setBackground(new Color(172, 222, 219));
-		btnPesquisar.setBounds(750, 421, 30, 30);
-		contentPane.add(btnPesquisar);
+		ctPesquisar.setBounds(664, 421, 116, 30);
+		contentPane.add(ctPesquisar);
+		ctPesquisar.setColumns(10);
 
 		lblFundo = new JLabel("");
 		lblFundo.setBounds(0, 0, 792, 463);
