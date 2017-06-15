@@ -98,11 +98,26 @@ public class TelaPrincipal extends JFrame {
 		menuBar.add(mnRelatrio);
 
 		JMenuItem mntmCompra_1 = new JMenuItem("Compra");
+		mntmCompra_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				RelatorioCompras rc = new RelatorioCompras(id);
+				rc.setVisible(true);
+				dispose();
+				
+			}
+		});
 		mntmCompra_1.setFont(new Font("Segoe UI", Font.PLAIN, 18));
 
 		mnRelatrio.add(mntmCompra_1);
 
 		JMenuItem mntmVenda_1 = new JMenuItem("Venda");
+		mntmVenda_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				RelatorioVendas rv = new RelatorioVendas(id);
+				rv.setVisible(true);
+				dispose();
+			}
+		});
 		mntmVenda_1.setFont(new Font("Segoe UI", Font.PLAIN, 18));
 		mnRelatrio.add(mntmVenda_1);
 

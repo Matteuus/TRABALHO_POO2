@@ -19,14 +19,12 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.SystemColor;
 import java.awt.Toolkit;
-
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JTextField;
-import java.awt.Color;
 
 public class ListaCompras extends JFrame {
 
@@ -158,7 +156,7 @@ public class ListaCompras extends JFrame {
 			}
 		});
 		btnRefresh.setIcon(new ImageIcon(ListaCompras.class.getResource("/com/poo2/icones/refresh.png")));
-		btnRefresh.setBackground(new Color(172, 222, 219));
+		btnRefresh.setBackground(SystemColor.control);
 		btnRefresh.setBounds(381, 421, 30, 30);
 		contentPane.add(btnRefresh);
 		
@@ -178,7 +176,7 @@ public class ListaCompras extends JFrame {
 			}
 		});
 		btnPesquisar.setIcon(new ImageIcon(ListaCompras.class.getResource("/com/poo2/icones/search.png")));
-		btnPesquisar.setBackground(new Color(172, 222, 219));
+		btnPesquisar.setBackground(SystemColor.control);
 		btnPesquisar.setBounds(750, 421, 30, 30);
 		contentPane.add(btnPesquisar);
 

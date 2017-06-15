@@ -123,6 +123,16 @@ public class ListaProdutos extends JFrame {
 
 			}
 		});
+		
+		JButton btnAlterar = new JButton("Alterar");
+		btnAlterar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnAlterar.setBackground(SystemColor.control);
+		btnAlterar.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		btnAlterar.setBounds(338, 421, 116, 30);
+		contentPane.add(btnAlterar);
 		btnExcluir.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		btnExcluir.setBackground(SystemColor.control);
 		btnExcluir.setBounds(664, 421, 116, 30);
