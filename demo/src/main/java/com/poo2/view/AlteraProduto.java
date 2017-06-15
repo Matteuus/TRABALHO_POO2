@@ -1,5 +1,6 @@
 package com.poo2.view;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Font;
@@ -9,13 +10,17 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
-import com.poo2.contoller.VendaProduto;
+
+import com.poo2.contoller.ProdutosDAO;
+import com.poo2.model.Produtos;
 
 public class AlteraProduto extends JFrame {
 
@@ -23,7 +28,6 @@ public class AlteraProduto extends JFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	protected static final String String = null;
 	protected static final long Longs = 0;
 	protected static final String Strings = "";
 	private JPanel contentPane;
@@ -34,15 +38,15 @@ public class AlteraProduto extends JFrame {
 	private JLabel lblProdutoVenda;
 	private JLabel lblFundo;
 
-
 	/**
 	 * Launch the application.
 	 */
+
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					AlteraProduto frame = new AlteraProduto(Longs, Strings);
+					AlteraProduto frame = new AlteraProduto(Longs, Longs, Strings);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -54,7 +58,7 @@ public class AlteraProduto extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public AlteraProduto(long id, String categoria) {
+	public AlteraProduto(long idP, long id, String categoria) {
 		setTitle("Alterar Produto");
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
@@ -68,6 +72,13 @@ public class AlteraProduto extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
+		Produtos p = new Produtos();
+		ProdutosDAO pDAO = new ProdutosDAO();
+		p = pDAO.Buscarproduto2(idP);
+		if (ProdutosDAO.buscarProduto2) {
+
+		}
+
 		lblProdutoVenda = new JLabel("Produto a Venda");
 		lblProdutoVenda.setHorizontalAlignment(SwingConstants.CENTER);
 		lblProdutoVenda.setFont(new Font("Maiandra GD", Font.PLAIN, 18));
@@ -79,14 +90,27 @@ public class AlteraProduto extends JFrame {
 		lbCategoria.setBounds(12, 40, 378, 30);
 		contentPane.add(lbCategoria);
 
-		
+		JComboBox<String> ctCategoria = new JComboBox<String>();
+		ctCategoria.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		ctCategoria.setBackground(Color.WHITE);
+		ctCategoria.addItem("Ferramentas Manuais");
+		ctCategoria.addItem("EPI'S");
+		ctCategoria.addItem("Medição e Teste");
+		ctCategoria.addItem("Parafusos e Fixadores");
+		ctCategoria.addItem("Ferramentas Elétricas");
+		ctCategoria.addItem("Maquinas e Compressores");
+		ctCategoria.addItem("Conexões e Vedação");
+		ctCategoria.addItem("Correias e Rlamentos");
+		ctCategoria.addItem("Outros");
+		ctCategoria.setBounds(12, 70, 378, 30);
+		contentPane.add(ctCategoria);
 
 		JLabel lbNomeProduto = new JLabel("Nome");
 		lbNomeProduto.setFont(new Font("Maiandra GD", Font.PLAIN, 18));
 		lbNomeProduto.setBounds(12, 100, 378, 30);
 		contentPane.add(lbNomeProduto);
 
-		ctNomeProduto = new JTextField();
+		ctNomeProduto = new JTextField(p.getNomeProduto());
 		ctNomeProduto.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		ctNomeProduto.setBounds(12, 130, 378, 30);
 		contentPane.add(ctNomeProduto);
@@ -97,7 +121,9 @@ public class AlteraProduto extends JFrame {
 		lbQtd.setBounds(12, 160, 378, 30);
 		contentPane.add(lbQtd);
 
-		ctQtdProduto = new JTextField();
+		String qtd = String.valueOf(p.getEstoqueProduto());
+
+		ctQtdProduto = new JTextField(qtd);
 		ctQtdProduto.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		ctQtdProduto.setBounds(12, 190, 378, 30);
 		contentPane.add(ctQtdProduto);
@@ -108,7 +134,9 @@ public class AlteraProduto extends JFrame {
 		lbValor.setBounds(12, 220, 378, 30);
 		contentPane.add(lbValor);
 
-		ctValorProduto = new JTextField();
+		String valor = String.valueOf(p.getValorProduto());
+
+		ctValorProduto = new JTextField(valor);
 		ctValorProduto.setColumns(10);
 		ctValorProduto.setBounds(12, 250, 378, 30);
 		contentPane.add(ctValorProduto);
@@ -118,8 +146,8 @@ public class AlteraProduto extends JFrame {
 		btnVoltar.setBackground(SystemColor.control);
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				CategoriaProduto fcp = new CategoriaProduto(id);
-				fcp.setVisible(true);
+				TelaPrincipal tp = new TelaPrincipal(id);
+				tp.setVisible(true);
 				dispose();
 			}
 		});
@@ -131,16 +159,37 @@ public class AlteraProduto extends JFrame {
 		btnAlterarProduto.setBackground(SystemColor.control);
 		btnAlterarProduto.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				VendaProduto vd = new VendaProduto();
+
+				if (ctNomeProduto.getText().isEmpty() || ctQtdProduto.getText().isEmpty()
+						|| ctValorProduto.getText().isEmpty()) {
+					JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
+				}
+
+				else {
+				
+				JOptionPane.showMessageDialog(null, "Produto Alterado!");
+
+				TelaPrincipal tp = new TelaPrincipal(id);
+				tp.setVisible(true);
+				dispose();
+
 				String valorAux = ctValorProduto.getText();
 				float valor = Float.valueOf(valorAux).floatValue();
 				String qtdAux = ctQtdProduto.getText();
 				int qtd = Integer.valueOf(qtdAux).intValue();
-				int resultado = vd.addDados(id, ctNomeProduto.getText(), categoria, valor, qtd);
-				if (resultado == 1) {
-					TelaPrincipal tl = new TelaPrincipal(id);
-					tl.setVisible(true);
-					dispose();
+				ProdutosDAO pd = new ProdutosDAO();
+				@SuppressWarnings("unused")
+				Produtos pro = new Produtos();
+
+				String c = ctCategoria.getSelectedItem().toString();
+
+				
+					pro = pd.AlterarProdutos(idP, ctNomeProduto.getText().toString(), c, valor, qtd);
+
+					if (ProdutosDAO.alterarproduto) {
+
+					}
+
 				}
 			}
 		});

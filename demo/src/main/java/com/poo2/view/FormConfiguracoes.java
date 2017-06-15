@@ -308,41 +308,34 @@ public class FormConfiguracoes extends JFrame {
 			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent arg0) {
 
-				JOptionPane.showMessageDialog(null, "Dados Alterados com Sucesso!, por favor logue-se novamente");
-
-				TelaLogin tl = new TelaLogin();
-				tl.setVisible(true);
-				dispose();
 				@SuppressWarnings("unused")
 				Empresas empresas = new Empresas();
 				EmpresasDAO e = new EmpresasDAO();
 				empresas = e.Buscarempresa2(id);
-				if (!ctNome.getText().isEmpty() && !ctCnpj.getText().isEmpty() && !ctTel.getText().isEmpty()
-						&& !ctLogradouro.getText().isEmpty() && !ctBairro.getText().isEmpty()
-						&& !ctNumero.getText().isEmpty() && !ctCidade.getText().isEmpty()
-						&& !ctSenha.getText().isEmpty()) {
+				if (ctNome.getText().isEmpty() || ctCnpj.getText().isEmpty() || ctTel.getText().isEmpty()
+						|| ctLogradouro.getText().isEmpty() || ctBairro.getText().isEmpty()
+						|| ctNumero.getText().isEmpty() || ctCidade.getText().isEmpty()
+						|| ctSenha.getText().isEmpty()) {
 
+					JOptionPane.showMessageDialog(null, "Preencha todos os campos!", "Falha!",
+							JOptionPane.ERROR_MESSAGE);
+
+				} else {
+					JOptionPane.showMessageDialog(null, "Alterado com Sucesso");
+					TelaLogin tl = new TelaLogin();
+					tl.setVisible(true);
+					dispose();
 					String numAux = ctNumero.getText();
 					int numero = Integer.valueOf(numAux).intValue();
 					empresas = e.Alterarempresa(ctNome.getText(), ctCnpj.getText(), ctTel.getText(), ctCep.getText(),
 							ctLogradouro.getText(), ctBairro.getText(), numero, ctComplemento.getText(),
 							ctCidade.getText(), ctEstado.getSelectedItem().toString(), ctUsuario.getText(),
 							ctSenha.getText(), id);
+					
 					if (EmpresasDAO.alterarempresa) {
-						JOptionPane.showMessageDialog(null, "Alterado com sucesso!");
-						dispose();
-					} else {
-						JOptionPane.showMessageDialog(null, "Erro ao alterar!");
-					}
 
-				} else {
-					JOptionPane.showMessageDialog(null, "Preencha todos os campos!", "Falha!",
-							JOptionPane.ERROR_MESSAGE);
-					ctNome.requestFocus();
+					}
 				}
-				TelaLogin tl1 = new TelaLogin();
-				tl1.setVisible(true);
-				dispose();
 			}
 		});
 		btnSalvarDados.setBounds(664, 421, 116, 30);

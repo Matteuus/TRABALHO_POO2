@@ -10,6 +10,8 @@ import javax.swing.border.EmptyBorder;
 import com.poo2.contoller.VendaProduto;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import java.awt.Toolkit;
 
@@ -141,16 +143,21 @@ public class FormVendaProduto extends JFrame {
 		btnSalvarProduto.setBackground(SystemColor.control);
 		btnSalvarProduto.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				VendaProduto vd = new VendaProduto();
-				String valorAux = ctValorProduto.getText();
-				float valor = Float.valueOf(valorAux).floatValue();
-				String qtdAux = ctQtdProduto.getText();
-				int qtd = Integer.valueOf(qtdAux).intValue();
-				int resultado = vd.addDados(id, ctNomeProduto.getText(), categoria, valor, qtd);
-				if (resultado == 1) {
-					TelaPrincipal tl = new TelaPrincipal(id);
-					tl.setVisible(true);
-					dispose();
+				if (ctCategoria.getText().isEmpty() || ctNomeProduto.getText().isEmpty()
+						|| ctQtdProduto.getText().isEmpty() || ctValorProduto.getText().isEmpty()) {
+					JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
+				} else {
+					VendaProduto vd = new VendaProduto();
+					String valorAux = ctValorProduto.getText();
+					float valor = Float.valueOf(valorAux).floatValue();
+					String qtdAux = ctQtdProduto.getText();
+					int qtd = Integer.valueOf(qtdAux).intValue();
+					int resultado = vd.addDados(id, ctNomeProduto.getText(), categoria, valor, qtd);
+					if (resultado == 1) {
+						TelaPrincipal tl = new TelaPrincipal(id);
+						tl.setVisible(true);
+						dispose();
+					}
 				}
 			}
 		});

@@ -45,7 +45,7 @@ public class RelatorioCompraTableModel extends AbstractTableModel {
 		ProdutosDAO pd = new ProdutosDAO();
 		String nome = ed.Buscarempresa(relatorio.getIdEmpresaVenda());
 		String nomep = pd.Buscarproduto(relatorio.getIdProduto());
-		
+
 		switch (columnIndex) {
 
 		case 0:

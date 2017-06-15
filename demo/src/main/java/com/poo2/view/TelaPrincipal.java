@@ -103,7 +103,7 @@ public class TelaPrincipal extends JFrame {
 				RelatorioCompras rc = new RelatorioCompras(id);
 				rc.setVisible(true);
 				dispose();
-				
+
 			}
 		});
 		mntmCompra_1.setFont(new Font("Segoe UI", Font.PLAIN, 18));

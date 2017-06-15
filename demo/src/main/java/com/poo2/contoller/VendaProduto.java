@@ -30,4 +30,28 @@ public class VendaProduto {
 		return resultado;
 	}
 
+	public int alterarDados(long idEmpresa, String nomeProduto, String categoriaProduto, float valorProduto,
+			int estoqueProduto) {
+
+		int resultado = 0;
+		Produtos p = new Produtos();
+
+		p.setIdEmpresa(idEmpresa);
+		p.setNomeProduto(nomeProduto);
+		p.setCategoriaProduto(categoriaProduto);
+		p.setValorProduto(valorProduto);
+		p.setEstoqueProduto(estoqueProduto);
+
+		DAO<Produtos> dao = new ProdutosDAO();
+
+		if (dao.alterar(p)) {
+			JOptionPane.showMessageDialog(null, "Alterado com sucesso!", "Sucesso!", JOptionPane.INFORMATION_MESSAGE);
+			resultado = 1;
+		} else {
+			JOptionPane.showMessageDialog(null, "Falha ao Alterar!", "Falha!", JOptionPane.ERROR_MESSAGE);
+			resultado = 0;
+		}
+		return resultado;
+	}
+
 }

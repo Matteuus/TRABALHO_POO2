@@ -123,13 +123,25 @@ public class ListaProdutos extends JFrame {
 
 			}
 		});
-		
+
 		JButton btnAlterar = new JButton("Alterar");
 		btnAlterar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				
-				
+
+				int linha = table.getSelectedRow();
+
+				if (linha < 0) {
+					JOptionPane.showMessageDialog(null, "Selecione um Produto!", "Erro!", JOptionPane.ERROR_MESSAGE);
+				} else {
+
+					Object o = table.getValueAt(linha, 0);
+					ProdutosDAO pd = new ProdutosDAO();
+					Produtos p = pd.listar("idProduto", (long) o).get(0);
+
+					AlteraProduto ap = new AlteraProduto(p.getIdProduto(), id, p.getCategoriaProduto());
+					ap.setVisible(true);
+					dispose();
+				}
 			}
 		});
 		btnAlterar.setBackground(SystemColor.control);
