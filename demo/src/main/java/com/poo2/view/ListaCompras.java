@@ -30,7 +30,6 @@ import javax.swing.JTextField;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
-
 public class ListaCompras extends JFrame {
 
 	/**
@@ -109,24 +108,23 @@ public class ListaCompras extends JFrame {
 					if (qtdrestante < 0) {
 						JOptionPane.showMessageDialog(null, "Quantidade indisponível");
 					} else {
-						
+
 						float total = qtdselecionada * p.getValorProduto();
-						
+
 						p2.setIdProduto(p.getIdProduto());
 						p2.setIdEmpresaCompra(id);
 						p2.setIdEmpresaVenda(p.getIdEmpresa());
 						p2.setQtdProduto(qtdselecionada);
 						p2.setValorTotal(total);
-						
-						p.setEstoqueProduto(qtdrestante);
 
+						p.setEstoqueProduto(qtdrestante);
 
 						pd.alterar(p);
 						rd.salvar(p2);
 						qtdrestante = 0;
-						
+
 						JOptionPane.showMessageDialog(null, "Compra efetuada com sucesso!");
-						
+
 						PreencherTabela(id);
 
 					}
@@ -154,7 +152,7 @@ public class ListaCompras extends JFrame {
 			}
 		});
 		contentPane.add(btnVoltar);
-		
+
 		JButton btnRefresh = new JButton("");
 		btnRefresh.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -165,24 +163,28 @@ public class ListaCompras extends JFrame {
 		btnRefresh.setBackground(SystemColor.control);
 		btnRefresh.setBounds(381, 421, 30, 30);
 		contentPane.add(btnRefresh);
-		
+
 		JLabel lblBusca = new JLabel("Busca: ");
 		lblBusca.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblBusca.setBounds(594, 421, 60, 30);
 		contentPane.add(lblBusca);
-		
+
 		ctPesquisar = new JTextField();
 		ctPesquisar.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyReleased(KeyEvent e) {
 
-		            ProdutosDAO pd = new ProdutosDAO();
-		            ProdutoTableModel ptm = new ProdutoTableModel(pd.listar("nomeProduto", ctPesquisar.getText()));
-		            table.setModel(ptm);
-		        
+				ProdutosDAO pd = new ProdutosDAO();
+				ProdutoTableModel ptm = new ProdutoTableModel(pd.listar("nomeProduto", ctPesquisar.getText()));
+				table.setModel(ptm);
+
 			}
 		});
-		
+
+		ctPesquisar.setBounds(664, 421, 116, 30);
+		contentPane.add(ctPesquisar);
+		ctPesquisar.setColumns(10);
+
 		lblFundo = new JLabel("");
 		lblFundo.setBounds(0, 0, 792, 463);
 		lblFundo.setIcon(new ImageIcon(ListaCompras.class.getResource("/com/poo2/img/fundo1.jpeg")));
