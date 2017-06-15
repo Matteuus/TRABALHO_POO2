@@ -58,6 +58,7 @@ public class RelatorioCompras extends JFrame {
 	 * Create the frame.
 	 */
 	public RelatorioCompras(long id) {
+		setTitle("Relatório de Compras");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		int width = 810;
 		int height = 510;
