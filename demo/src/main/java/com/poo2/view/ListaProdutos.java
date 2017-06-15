@@ -127,6 +127,9 @@ public class ListaProdutos extends JFrame {
 		JButton btnAlterar = new JButton("Alterar");
 		btnAlterar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				
+				
 			}
 		});
 		btnAlterar.setBackground(SystemColor.control);
